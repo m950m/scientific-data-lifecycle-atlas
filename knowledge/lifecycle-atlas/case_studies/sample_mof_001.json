@@ -1,0 +1,123 @@
+{
+  "id": "CASE-MOF-001",
+  "title": "SAMPLE-MOF-001 — end-to-end evidence journey",
+  "status": "illustrative_contract_case",
+  "scientific_status": "synthetic_or_illustrative_not_a_research_finding",
+  "source_contract_ref": "P1",
+  "record": {
+    "external_record_id": "SAMPLE-MOF-001",
+    "preferred_name": "Sample MOF 001",
+    "cif_path": "data/sample/structures/sample_001.cif",
+    "property": {
+      "property": "band_gap",
+      "value": 2.1,
+      "unit": "eV",
+      "observation_kind": "imported",
+      "calculation_context": {
+        "method_family": "DFT",
+        "software_name": "IllustrativeCode",
+        "functional": "PBE",
+        "dispersion_correction": "D3",
+        "geometry_context": "relaxed"
+      }
+    }
+  },
+  "journey": [
+    {
+      "stage_id": "plan",
+      "artifact": "data/sample/manifest.json",
+      "proof": "Record contract defines external ID, CIF location, property, unit and calculation context.",
+      "runtime_verification": "not_run_here"
+    },
+    {
+      "stage_id": "generate",
+      "artifact": "data/sample/structures/sample_001.cif",
+      "proof": "Illustrative source structure is bundled locally so the demo does not depend on network retrieval.",
+      "runtime_verification": "not_run_here"
+    },
+    {
+      "stage_id": "ingest",
+      "artifact": "raw_source_record",
+      "proof": "Expected immutable raw payload plus deterministic checksum and ingestion_batch linkage.",
+      "runtime_verification": "must_be_proven_by_tests"
+    },
+    {
+      "stage_id": "process",
+      "artifact": "structure_version + validation_run",
+      "proof": "Gemmi parsing and stable validation codes should create a valid version or quarantine the raw record.",
+      "runtime_verification": "must_be_proven_by_tests"
+    },
+    {
+      "stage_id": "analyze",
+      "artifact": "derived descriptors + property_observation",
+      "proof": "Formula/atom count/volume/density may be derived when defensible; imported band gap retains method context.",
+      "runtime_verification": "must_be_proven_by_tests"
+    },
+    {
+      "stage_id": "package",
+      "artifact": "lineage response",
+      "proof": "Observation should trace to calculation/derivation context, structure version, raw record, release, source and batch.",
+      "runtime_verification": "must_be_proven_by_lineage_test"
+    },
+    {
+      "stage_id": "preserve",
+      "artifact": "immutable raw + append-only observations",
+      "proof": "Older scientific evidence is retained rather than overwritten.",
+      "runtime_verification": "must_be_proven_by_integration_tests"
+    },
+    {
+      "stage_id": "share",
+      "artifact": "API / CLI / Streamlit",
+      "proof": "Researcher can inspect structures, observations, failures and lineage locally.",
+      "runtime_verification": "must_be_proven_by_api_and_demo_tests"
+    },
+    {
+      "stage_id": "reuse",
+      "artifact": "dockerized demo + lineage query",
+      "proof": "A clean user should be able to reproduce the local demo and understand where the property came from.",
+      "runtime_verification": "future_clean_environment_check"
+    }
+  ],
+  "failure_injections": [
+    {
+      "id": "FI-001",
+      "name": "Raw mutation after ingest",
+      "stage_id": "ingest",
+      "mutation": "Change one byte in the preserved raw payload after checksum capture.",
+      "expected_gate": "checksum/fixity or immutability control rejects/detects the change.",
+      "minimum_test": "Attempted update of raw_source_record must fail or be prevented by the persistence contract."
+    },
+    {
+      "id": "FI-002",
+      "name": "Malformed CIF",
+      "stage_id": "process",
+      "mutation": "Use the bundled malformed CIF record.",
+      "expected_gate": "CIF_PARSE_FAILED is recorded; raw evidence remains; no false successful structure version is published.",
+      "minimum_test": "Integration test asserts preserved raw + fatal issue + quarantine."
+    },
+    {
+      "id": "FI-003",
+      "name": "Incomplete DFT context",
+      "stage_id": "analyze",
+      "mutation": "Import band gap with missing method context fields.",
+      "expected_gate": "Observation remains traceable but the missing context is explicit; no invented values.",
+      "minimum_test": "Quality/validation status exposes incompleteness without fabricating parameters."
+    },
+    {
+      "id": "FI-004",
+      "name": "Broken lineage link",
+      "stage_id": "package",
+      "mutation": "Remove or omit the relationship needed to reach source/release.",
+      "expected_gate": "Lineage completeness test fails.",
+      "minimum_test": "GET /lineage/observations/{id} cannot pass the complete-chain assertion."
+    },
+    {
+      "id": "FI-005",
+      "name": "Duplicate re-ingestion",
+      "stage_id": "ingest",
+      "mutation": "Run the identical bundled ingestion a second time.",
+      "expected_gate": "No duplicate source/release/raw/structure/observation is created for the same identity/method version.",
+      "minimum_test": "Second run succeeds and reports reused/skipped counts."
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+[
+  {
+    "name": "Metadata Completeness",
+    "formula": "required fields present ÷ required fields expected × 100",
+    "stage": "package",
+    "meaning": "هل الحد الأدنى المعرّف محليًا من metadata مكتمل؟",
+    "caveat": "لا يقيس غنى المعنى أو صحة القيم.",
+    "refs": [
+      "S7"
+    ]
+  },
+  {
+    "name": "Provenance Coverage",
+    "formula": "derived artifacts with traceable inputs + activity ÷ derived artifacts × 100",
+    "stage": "package",
+    "meaning": "ما نسبة المخرجات التي يمكن تتبعها؟",
+    "caveat": "اكتمال graph لا يثبت صحة النشاط نفسه.",
+    "refs": [
+      "S4"
+    ]
+  },
+  {
+    "name": "Fixity Pass Rate",
+    "formula": "objects with current checksum = expected checksum ÷ objects checked × 100",
+    "stage": "preserve",
+    "meaning": "هل البتات ما زالت كما نتوقع؟",
+    "caveat": "يثبت integrity على مستوى البتات لا authenticity أو scientific validity.",
+    "refs": [
+      "S8",
+      "S20"
+    ]
+  },
+  {
+    "name": "Restore Success",
+    "formula": "successful tested restores ÷ restore tests attempted × 100",
+    "stage": "preserve",
+    "meaning": "هل النسخ الاحتياطية قابلة للاسترجاع فعلاً؟",
+    "caveat": "الاسترجاع لا يساوي long-term preservation.",
+    "refs": [
+      "S20"
+    ]
+  },
+  {
+    "name": "Reproducibility Check",
+    "formula": "reruns meeting declared tolerance ÷ reruns attempted × 100",
+    "stage": "reuse",
+    "meaning": "هل يمكن إعادة الحساب وفق تعريف acceptance محدد؟",
+    "caveat": "يجب إعلان tolerance؛ المقياس ليس universal threshold.",
+    "refs": [
+      "S11"
+    ]
+  },
+  {
+    "name": "PID Resolution Rate",
+    "formula": "resolving persistent IDs ÷ IDs checked × 100",
+    "stage": "share",
+    "meaning": "هل المعرّفات تقود إلى landing pages صالحة؟",
+    "caveat": "resolve ناجح لا يعني أن المحتوى صحيح أو متاح للجميع.",
+    "refs": [
+      "S3",
+      "S7"
+    ]
+  }
+]

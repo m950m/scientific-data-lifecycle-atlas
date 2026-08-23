@@ -1,0 +1,20 @@
+[
+  {
+    "id": "P1",
+    "title": "AGENTS.md — MOF Scientific Data Platform: One-Shot MVP Build",
+    "kind": "project_specification",
+    "path": "AGENTS.md",
+    "anchor": "Product / First complete use case / Relational data model / Ingestion behavior / Tests",
+    "status": "specified_not_runtime_verified",
+    "note": "Primary repository execution contract. Do not interpret it as proof that implementation currently exists or passes."
+  },
+  {
+    "id": "P2",
+    "title": "Project Vision",
+    "kind": "project_specification",
+    "path": "docs/01_Project_Vision.md",
+    "anchor": "Platform Function / Differentiator / Success",
+    "status": "specified_not_runtime_verified",
+    "note": "Defines the traceable scientific-source → reproducible-result chain and success criteria."
+  }
+]

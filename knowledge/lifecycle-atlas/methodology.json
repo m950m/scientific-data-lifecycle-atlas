@@ -1,0 +1,14 @@
+{
+  "backbone": "NIST Research Data Framework (RDaF) v2.0",
+  "synthesis": "10 operational control points derived for implementation clarity; not presented as a new standard.",
+  "cross_cutting": [
+    "metadata",
+    "provenance",
+    "quality",
+    "security/integrity",
+    "ethics/rights",
+    "cost/sustainability"
+  ],
+  "epistemic_note": "Standards/framework claims are source-anchored. Stage decomposition, risk scores and proposed metrics are explicitly operational synthesis.",
+  "risk_score_methodology": "Per-stage risk scores (0-100) are an ordinal expert-judgment ranking, not a computed or measured probability. They are not derived from a formula, a dataset, or an incident count. The relative ordering across stages reflects three qualitative factors discussed in the sources: (1) irreversibility - can the missing information be reconstructed later, or is it gone for good (documented_cases.json, failures.json); (2) detectability - does the failure surface immediately or only much later, silently (e.g. silent semantic coercion vs. a parse error); (3) propagation breadth - how many downstream stages does the failure taxonomy (failures.json `prop`) show it reaching. No claim is made that these three factors are exhaustive, independently weighted, or reproducible between reviewers; a different reviewer applying the same three factors could reasonably land on different numbers within roughly +/-10-15 points. Treat the score as 'this stage is meaningfully riskier than that one,' not as a measured quantity."
+}

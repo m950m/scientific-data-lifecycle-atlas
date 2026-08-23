@@ -1,0 +1,222 @@
+[
+  {
+    "id": "S1",
+    "title": "NIST Research Data Framework (RDaF) Version 2.0",
+    "org": "NIST",
+    "type": "Framework / authoritative guidance",
+    "version": "2.0, NIST SP 1500-18r2",
+    "date": "2024-02-07",
+    "url": "https://doi.org/10.6028/NIST.SP.1500-18r2",
+    "what": "Six-stage cyclical research-data lifecycle; definitions, cross-cutting themes, quality as fit-for-purpose, provenance and chain-of-custody."
+  },
+  {
+    "id": "S2",
+    "title": "DCC Curation Lifecycle Model",
+    "org": "Digital Curation Centre",
+    "type": "Curation framework",
+    "version": "Lifecycle model (original 2008; maintained guidance)",
+    "date": "2008–current guidance",
+    "url": "https://www.dcc.ac.uk/guidance/curation-lifecycle-model",
+    "what": "Data-centric curation model showing continuous description, preservation planning, community watch and curation across the lifecycle."
+  },
+  {
+    "id": "S3",
+    "title": "The FAIR Guiding Principles for scientific data management and stewardship",
+    "org": "Wilkinson et al., Scientific Data",
+    "type": "Peer-reviewed principles",
+    "version": "Original FAIR publication",
+    "date": "2016-03-15",
+    "url": "https://doi.org/10.1038/sdata.2016.18",
+    "what": "Findable, Accessible, Interoperable, Reusable principles; persistent identifiers, rich metadata, access protocols, provenance, licenses and domain standards."
+  },
+  {
+    "id": "S4",
+    "title": "PROV-O: The PROV Ontology",
+    "org": "W3C",
+    "type": "Web standard / Recommendation",
+    "version": "W3C Recommendation",
+    "date": "2013-04-30",
+    "url": "https://www.w3.org/TR/prov-o/",
+    "what": "Interchange model for provenance using entities, activities and agents; designed to be specialized by domains."
+  },
+  {
+    "id": "S5",
+    "title": "ISO 14721:2025 — Reference Model for an Open Archival Information System (OAIS)",
+    "org": "ISO / CCSDS",
+    "type": "International standard",
+    "version": "Edition 3",
+    "date": "2025-03",
+    "url": "https://www.iso.org/standard/87471.html",
+    "what": "Long-term preservation reference model; ingest, archival storage, data management, access, preservation planning, designated community and representation information."
+  },
+  {
+    "id": "S6",
+    "title": "PREMIS Data Dictionary for Preservation Metadata",
+    "org": "Library of Congress / PREMIS",
+    "type": "Preservation metadata specification",
+    "version": "3.0 (current)",
+    "date": "2015-06; current as of 2025-12",
+    "url": "https://www.loc.gov/standards/premis/v3/",
+    "what": "Core preservation metadata model for objects, events, agents, rights and associated preservation evidence."
+  },
+  {
+    "id": "S7",
+    "title": "DataCite Metadata Schema",
+    "org": "DataCite",
+    "type": "Metadata schema",
+    "version": "4.7",
+    "date": "2026-03-03",
+    "url": "https://schema.datacite.org/meta/kernel-4/",
+    "what": "Current generic citation/discovery metadata schema for research outputs; includes identifiers, creators, versions, related identifiers and resource types."
+  },
+  {
+    "id": "S8",
+    "title": "Levels of Digital Preservation",
+    "org": "NDSA",
+    "type": "Preservation practice framework",
+    "version": "2.1",
+    "date": "2026-03-23",
+    "url": "https://www.ndsa.org/publications/levels-of-digital-preservation/",
+    "what": "Practical maturity guidance around storage, integrity, control, metadata and content; v2.1 adds environmental sustainability guidance."
+  },
+  {
+    "id": "S9",
+    "title": "CoreTrustSeal Trustworthy Data Repositories Requirements",
+    "org": "CoreTrustSeal",
+    "type": "Repository certification requirements",
+    "version": "2026–2028",
+    "date": "2026",
+    "url": "https://www.coretrustseal.org/why-certification/requirements/",
+    "what": "Current requirements for trustworthy repositories, covering organizational infrastructure, digital object management and technology/security."
+  },
+  {
+    "id": "S10",
+    "title": "The TRUST Principles for digital repositories",
+    "org": "Lin et al., Scientific Data",
+    "type": "Peer-reviewed principles",
+    "version": "TRUST",
+    "date": "2020-05-14",
+    "url": "https://doi.org/10.1038/s41597-020-0486-7",
+    "what": "Transparency, Responsibility, User focus, Sustainability and Technology for trustworthy repositories; complements FAIR."
+  },
+  {
+    "id": "S11",
+    "title": "Reproducibility and Replicability in Science",
+    "org": "US National Academies (NASEM)",
+    "type": "Consensus report",
+    "version": "2019",
+    "date": "2019",
+    "url": "https://nap.nationalacademies.org/catalog/25303/reproducibility-and-replicability-in-science",
+    "what": "Defines computational reproducibility as obtaining consistent results using the same data, methods, code and analysis conditions; distinguishes replication using new data."
+  },
+  {
+    "id": "S12",
+    "title": "International Vocabulary of Metrology (VIM) — JCGM 200:2012",
+    "org": "JCGM / BIPM",
+    "type": "Metrology vocabulary",
+    "version": "3rd edition, corrected",
+    "date": "2012",
+    "url": "https://www.bipm.org/en/doi/10.59161/jcgm200-2012",
+    "what": "Definitions of measurement, calibration, measurement uncertainty and metrological traceability; traceability does not by itself guarantee fitness for purpose."
+  },
+  {
+    "id": "S13",
+    "title": "Final NIH Policy for Data Management and Sharing",
+    "org": "NIH",
+    "type": "Funder policy",
+    "version": "Effective 2023-01-25",
+    "date": "2020-10-29 / effective 2023",
+    "url": "https://grants.nih.gov/grants/guide/notice-files/NOT-OD-21-013.html",
+    "what": "Requires a Data Management and Sharing Plan for covered NIH research and emphasizes responsible data management, preservation and appropriate sharing."
+  },
+  {
+    "id": "S14",
+    "title": "Selecting a Data Repository",
+    "org": "NIH",
+    "type": "Repository selection guidance",
+    "version": "Current guidance",
+    "date": "updated 2025-08-05",
+    "url": "https://www.grants.nih.gov/policy-and-compliance/policy-topics/sharing-policies/dms/selecting-a-data-repository",
+    "what": "Desirable repository characteristics: PID, sustainability, metadata, curation/QA, provenance, retention, access controls and long-term management."
+  },
+  {
+    "id": "S15",
+    "title": "What FAIR is not",
+    "org": "GO FAIR",
+    "type": "Authoritative FAIR implementation guidance",
+    "version": "FAQ / interpretation",
+    "date": "current",
+    "url": "https://www.go-fair.org/resources/faq/what-fair-is-not/",
+    "what": "FAIR is not a standard, not equivalent to open, and does not itself cover intrinsic data quality or ethics."
+  },
+  {
+    "id": "S16",
+    "title": "RO-Crate Metadata Specification",
+    "org": "Research Object community",
+    "type": "Community specification",
+    "version": "1.3",
+    "date": "2026-06-22",
+    "url": "https://w3id.org/ro/crate/1.3",
+    "what": "Current recommendation for packaging research data with machine-readable JSON-LD metadata, contextual entities, provenance and workflow descriptions."
+  },
+  {
+    "id": "S17",
+    "title": "The Availability of Research Data Declines Rapidly with Article Age",
+    "org": "Vines et al., Current Biology",
+    "type": "Peer-reviewed empirical evidence",
+    "version": "24(1):94–97",
+    "date": "2014-01-06",
+    "url": "https://doi.org/10.1016/j.cub.2013.11.014",
+    "what": "In 516 studies aged 2–22 years, odds of a dataset being reported extant fell by 17% per year; illustrates fragility of researcher-only long-term stewardship."
+  },
+  {
+    "id": "S18",
+    "title": "Gene name errors are widespread in the scientific literature",
+    "org": "Ziemann, Eren & El-Osta, Genome Biology",
+    "type": "Peer-reviewed empirical evidence",
+    "version": "17:177",
+    "date": "2016-08-23",
+    "url": "https://doi.org/10.1186/s13059-016-1044-7",
+    "what": "In selected genomics journals, 19.6% of papers with supplementary Excel gene lists were affected by gene-name conversion errors; illustrates silent transformation risk."
+  },
+  {
+    "id": "S19",
+    "title": "Scholarly Context Not Found: One in Five Articles Suffers from Reference Rot",
+    "org": "Klein et al., PLOS ONE",
+    "type": "Peer-reviewed empirical evidence",
+    "version": "9(12):e115253",
+    "date": "2014-12-26",
+    "url": "https://doi.org/10.1371/journal.pone.0115253",
+    "what": "Large-scale study found one in five STM articles suffered reference rot; among articles containing web references, seven in ten were affected."
+  },
+  {
+    "id": "S20",
+    "title": "Digital Preservation Handbook — Storage",
+    "org": "Digital Preservation Coalition",
+    "type": "Preservation guidance",
+    "version": "2nd edition handbook",
+    "date": "2015–current maintenance",
+    "url": "https://www.dpconline.org/handbook/organisational-activities/storage",
+    "what": "Explains why backup and digital preservation are not the same and why long-term preservation adds integrity monitoring, redundancy, planning and active stewardship."
+  },
+  {
+    "id": "S21",
+    "title": "NOMAD MetaInfo / computational data documentation",
+    "org": "FAIRmat / NOMAD",
+    "type": "Materials-science domain infrastructure",
+    "version": "current documentation",
+    "date": "current",
+    "url": "https://fairmat-nfdi.github.io/nomad-docs/examples/computational_data/metainfo.html",
+    "what": "Structured machine-readable computational materials metadata organized around method, system, calculation and workflow information."
+  },
+  {
+    "id": "S22",
+    "title": "OPTIMADE Specification",
+    "org": "OPTIMADE consortium",
+    "type": "Materials interoperability specification",
+    "version": "1.2 family / current stable branch",
+    "date": "current",
+    "url": "https://www.optimade.org/specification",
+    "what": "Common REST API and schemas for interoperable access to materials databases, including structures and optional calculations/files/references."
+  }
+]

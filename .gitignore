@@ -1,0 +1,12 @@
+# Added in v1.2 — .pytest_cache and __pycache__ were previously shipped
+# inside this integration pack itself (bundled test-run artifacts, not
+# source). Ignore them so they don't get committed if this pack is merged
+# as-is into the target repository.
+.pytest_cache/
+__pycache__/
+*.pyc
+.venv/
+*.egg-info/
+build/
+dist/
+.coverage

@@ -1,0 +1,167 @@
+[
+  {
+    "id": "calibration",
+    "name": "جهاز غير معاير / drift",
+    "root": "generate",
+    "severity": "حرج",
+    "kind": "Measurement / systematic error",
+    "desc": "القيم قد تكون متماسكة داخليًا لكنها منحازة بسبب حالة القياس.",
+    "prop": [
+      "generate",
+      "ingest",
+      "process",
+      "analyze",
+      "package",
+      "preserve",
+      "share",
+      "reuse"
+    ],
+    "detect": "control materials، calibration history، cross-instrument comparison، uncertainty review.",
+    "prevent": "calibration + metrological traceability حيث تنطبق؛ لا يكفي وجود instrument ID.",
+    "refs": [
+      "S12"
+    ]
+  },
+  {
+    "id": "identity",
+    "name": "خلط هوية العينة أو المصدر",
+    "root": "generate",
+    "severity": "حرج",
+    "kind": "Identity / chain-of-custody",
+    "desc": "معلومة صحيحة تُنسب إلى كيان خاطئ؛ كل المشتقات قد تصبح غير قابلة للدفاع.",
+    "prop": [
+      "generate",
+      "ingest",
+      "process",
+      "analyze",
+      "package",
+      "preserve",
+      "share",
+      "reuse"
+    ],
+    "detect": "sample/run reconciliation، barcode/ID checks، custody log.",
+    "prevent": "persistent internal IDs + custody events + no manual renaming as identity mechanism.",
+    "refs": [
+      "S1",
+      "S4"
+    ]
+  },
+  {
+    "id": "coercion",
+    "name": "تحويل صامت أثناء التنظيف",
+    "root": "process",
+    "severity": "مرتفع",
+    "kind": "Transformation / semantic loss",
+    "desc": "برنامج أو spreadsheet يغيّر القيم تلقائيًا دون فشل صريح.",
+    "prop": [
+      "process",
+      "analyze",
+      "package",
+      "preserve",
+      "share",
+      "reuse"
+    ],
+    "detect": "schema/domain constraints، diffs، round-trip checks، anomaly rules.",
+    "prevent": "scripted/versioned transforms، explicit types، raw preservation.",
+    "refs": [
+      "S18"
+    ]
+  },
+  {
+    "id": "provenance",
+    "name": "انقطاع الـProvenance",
+    "root": "package",
+    "severity": "مرتفع",
+    "kind": "Traceability / provenance",
+    "desc": "توجد نتيجة لكن لا يمكن إثبات أي inputs/activities/agents/versions أنتجتها.",
+    "prop": [
+      "package",
+      "preserve",
+      "share",
+      "reuse"
+    ],
+    "detect": "graph completeness / orphan derived artifacts.",
+    "prevent": "capture provenance أثناء العمل، لا كإعادة بناء يدوية بعد النشر.",
+    "refs": [
+      "S4",
+      "S1"
+    ]
+  },
+  {
+    "id": "environment",
+    "name": "غياب البيئة البرمجية",
+    "root": "analyze",
+    "severity": "مرتفع",
+    "kind": "Computational reproducibility",
+    "desc": "نفس البيانات والكود قد لا تعيد النتيجة بسبب dependencies أو runtime مختلف.",
+    "prop": [
+      "analyze",
+      "package",
+      "share",
+      "reuse"
+    ],
+    "detect": "clean-room rerun / CI reproduction check.",
+    "prevent": "environment manifest, lockfile/container where appropriate, versioned code.",
+    "refs": [
+      "S11",
+      "S16"
+    ]
+  },
+  {
+    "id": "fixity",
+    "name": "فساد ملف بلا كشف",
+    "root": "preserve",
+    "severity": "مرتفع",
+    "kind": "Integrity / preservation",
+    "desc": "تتغير البتات أو تضيع نسخة ولا يوجد baseline أو audit للكشف.",
+    "prop": [
+      "preserve",
+      "share",
+      "reuse"
+    ],
+    "detect": "scheduled checksum/fixity audit.",
+    "prevent": "multiple copies + fixity + monitored storage + restore tests.",
+    "refs": [
+      "S8",
+      "S20",
+      "S6"
+    ]
+  },
+  {
+    "id": "license",
+    "name": "ترخيص أو شروط وصول غامضة",
+    "root": "share",
+    "severity": "متوسط",
+    "kind": "Legal / access",
+    "desc": "قد تكون البيانات موجودة ويمكن اكتشافها لكن إعادة الاستخدام غير واضحة أو غير مسموحة.",
+    "prop": [
+      "share",
+      "reuse"
+    ],
+    "detect": "metadata audit: license/accessRights/conditions.",
+    "prevent": "explicit machine/human-readable rights and access process.",
+    "refs": [
+      "S3",
+      "S14",
+      "S15"
+    ]
+  },
+  {
+    "id": "reference",
+    "name": "Reference rot / رابط غير مستدام",
+    "root": "share",
+    "severity": "متوسط",
+    "kind": "Discovery / scholarly context",
+    "desc": "تختفي الصفحة أو يتغير محتواها فتضعف القدرة على إعادة زيارة السياق العلمي.",
+    "prop": [
+      "share",
+      "reuse"
+    ],
+    "detect": "link checking + PID resolution monitoring + archival snapshots where relevant.",
+    "prevent": "persistent identifiers, stable landing pages, repository deposit.",
+    "refs": [
+      "S19",
+      "S7"
+    ]
+  }
+]

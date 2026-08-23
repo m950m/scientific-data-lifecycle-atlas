@@ -1,0 +1,141 @@
+[
+  {
+    "id": "C001",
+    "label": "standard",
+    "text": "NIST RDaF 2.0 presents research-data activity as a cyclical lifecycle rather than a single mandatory linear pipeline.",
+    "refs": [
+      "S1"
+    ],
+    "scope": "general research data management",
+    "confidence": "high",
+    "caveat": "The Atlas's ten operational stages are a derived implementation decomposition, not the RDaF stage taxonomy itself."
+  },
+  {
+    "id": "C002",
+    "label": "standard",
+    "text": "W3C PROV models provenance around entities, activities, and agents and is designed for domain specialization.",
+    "refs": [
+      "S4"
+    ],
+    "scope": "provenance representation",
+    "confidence": "high",
+    "caveat": "PROV alone does not supply domain-specific scientific semantics."
+  },
+  {
+    "id": "C003",
+    "label": "standard",
+    "text": "FAIR does not imply that data must be openly accessible to everyone.",
+    "refs": [
+      "S3",
+      "S15"
+    ],
+    "scope": "FAIR interpretation",
+    "confidence": "high",
+    "caveat": "Access may require authentication/authorization; conditions must remain clear and actionable."
+  },
+  {
+    "id": "C004",
+    "label": "standard",
+    "text": "Backup and long-term digital preservation solve overlapping but non-identical problems.",
+    "refs": [
+      "S5",
+      "S20"
+    ],
+    "scope": "digital preservation",
+    "confidence": "high",
+    "caveat": "Exact operational controls depend on risk, designated community, repository context, and retention horizon."
+  },
+  {
+    "id": "C005",
+    "label": "evidence",
+    "text": "Silent spreadsheet transformations can alter scientific semantics without producing a conventional file error.",
+    "refs": [
+      "S18"
+    ],
+    "scope": "documented genomics spreadsheet case",
+    "confidence": "high",
+    "caveat": "The reported prevalence must not be generalized to all spreadsheets or scientific domains."
+  },
+  {
+    "id": "C006",
+    "label": "evidence",
+    "text": "Research data can become harder to recover as article age increases when stewardship depends on local researcher-held copies.",
+    "refs": [
+      "S17"
+    ],
+    "scope": "documented study sample",
+    "confidence": "high",
+    "caveat": "The 17% per-year result concerns odds within the study sample and is not a universal decay law."
+  },
+  {
+    "id": "C007",
+    "label": "synthesis",
+    "text": "A useful implementation lens is Stage → Inputs → Operations → Outputs → Failure modes → Detection → Controls → Evidence retained.",
+    "refs": [
+      "S1",
+      "S2",
+      "S4",
+      "S5"
+    ],
+    "scope": "Atlas operational model",
+    "confidence": "medium_high",
+    "caveat": "This is a synthesis for implementation and review, not an external standard."
+  },
+  {
+    "id": "C008",
+    "label": "project_decision",
+    "text": "Raw source records are immutable after insertion and property observations are append-only.",
+    "refs": [
+      "P1"
+    ],
+    "scope": "MOF Scientific Data Platform MVP",
+    "confidence": "high",
+    "caveat": "This is a repository design invariant, not a universal requirement for every scientific system."
+  },
+  {
+    "id": "C009",
+    "label": "project_decision",
+    "text": "The platform must preserve lineage from an observation back through calculation/derivation context, structure version, raw record, dataset release, source, and ingestion batch when applicable.",
+    "refs": [
+      "P1",
+      "P2"
+    ],
+    "scope": "MOF Scientific Data Platform MVP",
+    "confidence": "high",
+    "caveat": "This is the project's target lineage contract; runtime completeness must be tested against the implementation."
+  },
+  {
+    "id": "C010",
+    "label": "project_decision",
+    "text": "A malformed source record must remain preserved as raw evidence and be quarantined rather than converted into a false successful normalized structure.",
+    "refs": [
+      "P1"
+    ],
+    "scope": "MOF Scientific Data Platform ingestion",
+    "confidence": "high",
+    "caveat": "The precise transaction boundary and quarantine representation are implementation details."
+  },
+  {
+    "id": "C011",
+    "label": "hypothesis",
+    "text": "Making lifecycle evidence machine-checkable should reduce documentation drift between scientific policy and implementation.",
+    "refs": [],
+    "scope": "project engineering hypothesis",
+    "confidence": "medium",
+    "caveat": "This needs evaluation through change history, validation failures, or user studies; it is not established by the Atlas itself."
+  },
+  {
+    "id": "C012",
+    "label": "synthesis",
+    "text": "Reuse is a useful stress test because provenance, environment, identity, preservation, and rights gaps often become visible when the object leaves the original working context.",
+    "refs": [
+      "S1",
+      "S3",
+      "S11",
+      "S16"
+    ],
+    "scope": "cross-lifecycle interpretation",
+    "confidence": "medium_high",
+    "caveat": "A successful reuse attempt does not prove universal fitness for all future questions."
+  }
+]

@@ -1,0 +1,296 @@
+{
+  "project": {
+    "name": "MOF Scientific Data Platform",
+    "integration_status": "specification_mapped_not_runtime_verified",
+    "primary_contract_refs": [
+      "P1",
+      "P2"
+    ],
+    "principle": "The Atlas documents why the platform retains identity, raw evidence, validation, provenance, versions, and reuse context; the repository implementation must supply the executable proof."
+  },
+  "stage_coverage": [
+    {
+      "stage_id": "envision",
+      "status": "specified",
+      "repo_contract": [
+        "docs/ARCHITECTURE.md",
+        "docs/ASSUMPTIONS.md",
+        "docs/LIMITATIONS.md",
+        "docs/adr/"
+      ],
+      "entities": [],
+      "interfaces": [],
+      "tests": [],
+      "evidence_expected": [
+        "architecture decisions",
+        "assumptions",
+        "limitations",
+        "ADR records"
+      ],
+      "gap": "No runtime claim should be made from documentation alone."
+    },
+    {
+      "stage_id": "plan",
+      "status": "specified",
+      "repo_contract": [
+        "docs/DATA_MODEL.md",
+        "docs/SCIENTIFIC_SEMANTICS.md",
+        "data/sample/manifest.json"
+      ],
+      "entities": [
+        "source",
+        "dataset_release",
+        "property_definition",
+        "calculation_context"
+      ],
+      "interfaces": [],
+      "tests": [
+        "migrations from empty database",
+        "source/release uniqueness"
+      ],
+      "evidence_expected": [
+        "grain/identity/mutability definitions",
+        "sample manifest contract",
+        "scientific assumptions"
+      ],
+      "gap": "Formal DMP/repository deposit plan is outside the local MVP."
+    },
+    {
+      "stage_id": "generate",
+      "status": "bounded_demo",
+      "repo_contract": [
+        "data/sample/manifest.json",
+        "data/sample/structures/"
+      ],
+      "entities": [
+        "source",
+        "dataset_release"
+      ],
+      "interfaces": [],
+      "tests": [
+        "valid CIF parsing",
+        "malformed CIF result"
+      ],
+      "evidence_expected": [
+        "external_record_id",
+        "CIF text/path",
+        "band gap + unit",
+        "DFT calculation context"
+      ],
+      "gap": "The MVP deliberately uses bundled illustrative records; automated QMOF download in tests is out of scope."
+    },
+    {
+      "stage_id": "ingest",
+      "status": "specified",
+      "repo_contract": [
+        "src/mof_platform/ingestion/",
+        "data/sample/manifest.json"
+      ],
+      "entities": [
+        "ingestion_batch",
+        "raw_source_record",
+        "dataset_release"
+      ],
+      "interfaces": [
+        "POST /ingestion/sample",
+        "mof-platform ingest-sample"
+      ],
+      "tests": [
+        "deterministic checksums",
+        "raw-record immutability",
+        "complete sample ingestion",
+        "second-run idempotency"
+      ],
+      "evidence_expected": [
+        "record_checksum",
+        "manifest_checksum",
+        "ingestion_batch metrics",
+        "raw immutable payload"
+      ],
+      "gap": "Runtime evidence must come from observed tests/logs; the mapping itself is not proof."
+    },
+    {
+      "stage_id": "process",
+      "status": "specified",
+      "repo_contract": [
+        "src/mof_platform/scientific/",
+        "docs/SCIENTIFIC_SEMANTICS.md"
+      ],
+      "entities": [
+        "structure",
+        "structure_version",
+        "validation_run",
+        "validation_issue"
+      ],
+      "interfaces": [
+        "GET /validation/issues"
+      ],
+      "tests": [
+        "validation codes",
+        "malformed record preserved and quarantined",
+        "descriptor extraction"
+      ],
+      "evidence_expected": [
+        "parser name/version",
+        "stable validation codes",
+        "validation state",
+        "quarantine outcome"
+      ],
+      "gap": "The current MVP does not claim universal disorder correction or a custom CIF parser."
+    },
+    {
+      "stage_id": "analyze",
+      "status": "specified",
+      "repo_contract": [
+        "src/mof_platform/scientific/",
+        "src/mof_platform/services/"
+      ],
+      "entities": [
+        "structure_version",
+        "property_observation",
+        "calculation_context"
+      ],
+      "interfaces": [
+        "GET /observations",
+        "GET /analytics/summary"
+      ],
+      "tests": [
+        "band gap preserves calculation context",
+        "derived result preserves algorithm version",
+        "observation value constraint"
+      ],
+      "evidence_expected": [
+        "method/version",
+        "parameters",
+        "input structure version",
+        "unit",
+        "validation state"
+      ],
+      "gap": "Machine learning and distributed computation are explicitly out of scope for the MVP."
+    },
+    {
+      "stage_id": "package",
+      "status": "partial",
+      "repo_contract": [
+        "docs/DATA_MODEL.md",
+        "docs/SCIENTIFIC_SEMANTICS.md"
+      ],
+      "entities": [
+        "property_observation",
+        "calculation_context",
+        "structure_version",
+        "raw_source_record",
+        "dataset_release",
+        "source"
+      ],
+      "interfaces": [
+        "GET /lineage/observations/{observation_id}",
+        "mof-platform lineage <observation-id>"
+      ],
+      "tests": [
+        "lineage assembly",
+        "lineage reaches source and release"
+      ],
+      "evidence_expected": [
+        "provenance_json",
+        "observation→context→structure→raw→release→source chain"
+      ],
+      "gap": "RO-Crate/PID packaging is not part of the current MVP contract; the Atlas must show this as a gap, not pretend it is implemented."
+    },
+    {
+      "stage_id": "preserve",
+      "status": "partial",
+      "repo_contract": [
+        "src/mof_platform/domain/",
+        "docs/DATA_MODEL.md"
+      ],
+      "entities": [
+        "raw_source_record",
+        "structure_version",
+        "property_observation"
+      ],
+      "interfaces": [],
+      "tests": [
+        "raw-record immutability",
+        "second-run idempotency"
+      ],
+      "evidence_expected": [
+        "immutable raw record",
+        "append-only observation history",
+        "checksums"
+      ],
+      "gap": "Long-term archival storage, scheduled fixity audits, format migration, and repository certification are not implemented by the local MVP."
+    },
+    {
+      "stage_id": "share",
+      "status": "local_only",
+      "repo_contract": [
+        "src/mof_platform/api/",
+        "src/mof_platform/ui/",
+        "src/mof_platform/cli.py"
+      ],
+      "entities": [
+        "source",
+        "dataset_release",
+        "material",
+        "structure_version",
+        "property_observation",
+        "validation_issue"
+      ],
+      "interfaces": [
+        "REST API",
+        "OpenAPI docs",
+        "Typer CLI",
+        "Streamlit UI"
+      ],
+      "tests": [
+        "API health",
+        "list/detail endpoints",
+        "filters",
+        "lineage",
+        "analytics",
+        "404 behavior"
+      ],
+      "evidence_expected": [
+        "typed API responses",
+        "stable errors",
+        "query filters",
+        "lineage response"
+      ],
+      "gap": "External repository deposit, DOI/PID minting, durable landing page and public release policy are not part of the local MVP."
+    },
+    {
+      "stage_id": "reuse",
+      "status": "partial",
+      "repo_contract": [
+        "README.md",
+        "Dockerfile",
+        "docker-compose.yml",
+        "Makefile",
+        "docs/DEMO.md"
+      ],
+      "entities": [
+        "property_observation",
+        "calculation_context",
+        "structure_version"
+      ],
+      "interfaces": [
+        "docker compose up --build",
+        "mof-platform demo-summary",
+        "GET /lineage/observations/{observation_id}"
+      ],
+      "tests": [
+        "order-independent tests",
+        "meaningful coverage target",
+        "lineage reaches source and release"
+      ],
+      "evidence_expected": [
+        "reproducible local startup",
+        "versioned lineage",
+        "test results",
+        "demo query"
+      ],
+      "gap": "Independent third-party reproducibility/replication and externally archived releases remain future validation work."
+    }
+  ]
+}

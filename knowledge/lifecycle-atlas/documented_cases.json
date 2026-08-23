@@ -1,0 +1,32 @@
+[
+  {
+    "title": "Excel gene-name coercion",
+    "stat": "19.6%",
+    "scope": "selected genomics journals; papers with supplementary Excel gene lists",
+    "lesson": "التحويل الصامت يمكن أن يفسد semantics دون أن ينتج file error.",
+    "caution": "ليس معدل خطأ لكل spreadsheets أو لكل العلوم؛ هو قياس لسياق محدد.",
+    "refs": [
+      "S18"
+    ]
+  },
+  {
+    "title": "Research-data attrition with age",
+    "stat": "17%/year",
+    "scope": "odds that a dataset was reported extant in 516 studies aged 2–22 years",
+    "lesson": "الاعتماد على حاسوب/ذاكرة الباحث للحفظ طويل الأجل هش.",
+    "caution": "النتيجة تخص عينة الدراسة ولا تُعامل كقانون سنوي لكل المجالات.",
+    "refs": [
+      "S17"
+    ]
+  },
+  {
+    "title": "Reference rot",
+    "stat": "1 in 5",
+    "scope": "STM articles across large corpora; seven in ten among articles containing web references",
+    "lesson": "URL وحده ليس استراتيجية استدامة للسياق العلمي.",
+    "caution": "المقياس عن web references وليس عن DOI-resolved repository objects تحديدًا.",
+    "refs": [
+      "S19"
+    ]
+  }
+]

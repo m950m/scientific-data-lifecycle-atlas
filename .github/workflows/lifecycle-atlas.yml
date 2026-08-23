@@ -1,0 +1,41 @@
+name: lifecycle-atlas
+
+on:
+  pull_request:
+    paths:
+      - "knowledge/lifecycle-atlas/**"
+      - "docs/lifecycle-atlas/**"
+      - "scripts/build_lifecycle_atlas.py"
+      - "scripts/validate_lifecycle_atlas.py"
+      - "tests/test_lifecycle_atlas_contract.py"
+      - "pyproject.toml"
+      - ".github/workflows/lifecycle-atlas.yml"
+  push:
+    branches: [main]
+    paths:
+      - "knowledge/lifecycle-atlas/**"
+      - "docs/lifecycle-atlas/**"
+      - "scripts/build_lifecycle_atlas.py"
+      - "scripts/validate_lifecycle_atlas.py"
+      - "tests/test_lifecycle_atlas_contract.py"
+      - "pyproject.toml"
+      - ".github/workflows/lifecycle-atlas.yml"
+
+jobs:
+  validate-atlas:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # full history so `git log` can find the true last change to knowledge/, not just the tip commit
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install validator dependencies
+        run: python -m pip install -e ".[dev]"
+      - name: Validate knowledge contract
+        run: python scripts/validate_lifecycle_atlas.py
+      - name: Check generated frontend data is current
+        run: python scripts/build_lifecycle_atlas.py --check
+      - name: Run Atlas contract tests
+        run: python -m pytest -q tests/test_lifecycle_atlas_contract.py

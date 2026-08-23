@@ -1,0 +1,25 @@
+{
+  "experimental": [
+    "معرّف مادة/عينة/دفعة ثابت (sample/material/batch identity)",
+    "التركيب، البنية أو الوصف الفيزيائي اللازم لفهم العينة",
+    "المواد الأولية/المصادر والـlot إن كان مؤثرًا",
+    "خطوات التحضير، الزمن، الحرارة، الضغط، الوسط، atmosphere، وترتيب الخطوات",
+    "instrument model/ID، method، calibration/verification evidence، acquisition settings",
+    "الوحدات، uncertainty عندما تنطبق، ظروف البيئة، raw files الأصلية",
+    "سلسلة sample → measurement → file → processed result"
+  ],
+  "computational": [
+    "system/structure: species, coordinates, lattice/cell and relevant boundary conditions",
+    "method/model family and scientific approximations",
+    "software/code + exact version; input files",
+    "numerical parameters المؤثرة: basis/pseudopotential, cutoffs, k-points, convergence, smearing/spin بحسب الطريقة",
+    "workflow tasks, dependencies, inputs/outputs",
+    "environment/hardware details عندما تؤثر على إعادة التنفيذ",
+    "parsed normalized representation بجانب raw input/output"
+  ],
+  "interop": [
+    "NOMAD MetaInfo مثال على schema منظمة تفصل method / system / calculation / workflow.",
+    "OPTIMADE مثال على interoperability layer عبر REST API وschemas لمخازن بيانات المواد.",
+    "لا يوجد schema واحد يكفي كل مواد/تقنيات القياس؛ domain profiles يجب أن تُشتق من use case."
+  ]
+}

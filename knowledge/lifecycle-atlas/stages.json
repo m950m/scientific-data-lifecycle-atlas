@@ -1,0 +1,674 @@
+[
+  {
+    "id": "envision",
+    "num": "01",
+    "name": "التصور والحوكمة",
+    "en": "Envision & Governance",
+    "icon": "🧭",
+    "risk": 62,
+    "purpose": "تعريف لماذا توجد البيانات، من يملك القرارات، وما الاستخدامات والقيود التي يجب أن يصمم النظام لخدمتها.",
+    "inputs": [
+      "هدف البحث أو البرنامج",
+      "سياق مؤسسي/قانوني/أخلاقي",
+      "مجتمع المستخدمين المتوقع (Designated/Target Community)"
+    ],
+    "operations": [
+      "تعريف الأدوار والمسؤوليات",
+      "سياسة الملكية والوصول والاحتفاظ",
+      "تقدير التكلفة والاستدامة",
+      "تحديد نية FAIR وحدود الانفتاح"
+    ],
+    "outputs": [
+      "سياسة حوكمة",
+      "خريطة مسؤوليات",
+      "متطلبات وصول/احتفاظ",
+      "مبادئ قبول الجودة"
+    ],
+    "failures": [
+      {
+        "t": "غرض غير محدد",
+        "d": "يصبح من المستحيل الحكم هل البيانات «جيدة» لأن الجودة مرتبطة بالاستخدام المقصود."
+      },
+      {
+        "t": "مسؤوليات مبهمة",
+        "d": "فجوات في الملكية، النسخ، الموافقات، والقرار عند الحوادث."
+      },
+      {
+        "t": "خلط FAIR مع Open",
+        "d": "قد يؤدي إما إلى مشاركة غير مناسبة أو إغلاق غير مبرر."
+      }
+    ],
+    "signals": [
+      "لا يوجد owner واضح",
+      "لا توجد سياسة retention/access",
+      "معايير الجودة عامة وغير مرتبطة بالاستخدام"
+    ],
+    "controls": [
+      "RACI/ownership واضح",
+      "سياسة governance versioned",
+      "تعريف fit-for-purpose",
+      "تسجيل القيود القانونية/الأخلاقية"
+    ],
+    "records": [
+      "قرار الحوكمة",
+      "نسخة السياسة",
+      "سجل المخاطر",
+      "مبررات الاحتفاظ/الإتاحة"
+    ],
+    "refs": [
+      "S1",
+      "S13",
+      "S15"
+    ]
+  },
+  {
+    "id": "plan",
+    "num": "02",
+    "name": "تصميم الدراسة والتخطيط",
+    "en": "Study Design & Data Management Planning",
+    "icon": "🧩",
+    "risk": 78,
+    "purpose": "تحويل سؤال البحث إلى بروتوكول قابل للتنفيذ وإلى خطة بيانات تعرف مسبقًا ماذا سيُجمع وكيف سيُعرّف ويُخزن ويُشارك.",
+    "inputs": [
+      "سؤال/فرضية",
+      "تصميم تجريبي أو حسابي",
+      "متغيرات ومخرجات",
+      "متطلبات المؤسسة/الممول"
+    ],
+    "operations": [
+      "تعريف population/sample أو system",
+      "اختيار صيغ وschema",
+      "خطة تسمية وإصدارات",
+      "تخطيط metadata/provenance",
+      "خطة تخزين/نسخ/مشاركة"
+    ],
+    "outputs": [
+      "Protocol",
+      "DMP/DMS Plan",
+      "Data dictionary أولي",
+      "Naming/versioning convention",
+      "Quality plan"
+    ],
+    "failures": [
+      {
+        "t": "تعريف متغيرات بعد بدء الجمع",
+        "d": "يزيد خطر التناقض والتحيز وإعادة التفسير الرجعي."
+      },
+      {
+        "t": "غياب استراتيجية هوية",
+        "d": "تنفصل العينة/الحساب/الملف عن أصلها."
+      },
+      {
+        "t": "تأجيل preservation إلى النهاية",
+        "d": "قد تضيع معلومات لا يمكن استرجاعها لاحقًا."
+      }
+    ],
+    "signals": [
+      "حقول أساسية غير معرّفة",
+      "لا يوجد data dictionary",
+      "لا توجد خطة ربط sample ↔ measurement ↔ file"
+    ],
+    "controls": [
+      "Protocol versioned",
+      "DMP كوثيقة حية",
+      "معرفات ثابتة منذ البداية",
+      "mandatory metadata قبل التنفيذ"
+    ],
+    "records": [
+      "بروتوكول مع رقم نسخة",
+      "DMP",
+      "data dictionary",
+      "قرارات schema/format",
+      "خطة QA"
+    ],
+    "refs": [
+      "S1",
+      "S2",
+      "S13"
+    ]
+  },
+  {
+    "id": "generate",
+    "num": "03",
+    "name": "التوليد أو الاقتناء",
+    "en": "Generate / Acquire",
+    "icon": "🧪",
+    "risk": 94,
+    "purpose": "إنتاج أو استلام الملاحظة العلمية مع الحفاظ على الهوية، السياق، شروط القياس، وعدم اليقين وسلسلة التتبع.",
+    "inputs": [
+      "عينة/نظام أو مصدر خارجي",
+      "instrument / software",
+      "protocol",
+      "حالة المعايرة",
+      "هوية العينة/المصدر"
+    ],
+    "operations": [
+      "قياس/محاكاة/جمع",
+      "sampling",
+      "تسجيل timestamps",
+      "ربط instrument/software version",
+      "capture للسياق التجريبي"
+    ],
+    "outputs": [
+      "Raw observations/files",
+      "instrument logs",
+      "sample/source IDs",
+      "calibration/uncertainty evidence"
+    ],
+    "failures": [
+      {
+        "t": "خطأ قياس منهجي",
+        "d": "قد ينتج ملف كامل وصحيح بنيويًا لكنه متحيز علميًا."
+      },
+      {
+        "t": "خلط هوية العينة",
+        "d": "تُنسب نتيجة صحيحة إلى كيان خاطئ؛ أخطر من missing value."
+      },
+      {
+        "t": "غياب المعايرة/التتبعية",
+        "d": "يصعب ربط القياس بمرجع أو تقدير أثر الجهاز على النتيجة."
+      }
+    ],
+    "signals": [
+      "control sample خارج النطاق",
+      "timestamp أو instrument ID مفقود",
+      "تناقض بين sample log والملفات"
+    ],
+    "controls": [
+      "metrological traceability حيث تنطبق",
+      "calibration records",
+      "unique sample/run IDs",
+      "raw capture غير قابل للكتابة فوقه"
+    ],
+    "records": [
+      "raw file الأصلي",
+      "instrument ID/config",
+      "calibration certificate/log",
+      "sample lineage",
+      "uncertainty/context"
+    ],
+    "refs": [
+      "S1",
+      "S12"
+    ]
+  },
+  {
+    "id": "ingest",
+    "num": "04",
+    "name": "النقل والإدخال وحماية الخام",
+    "en": "Transfer, Ingest & Raw Protection",
+    "icon": "📥",
+    "risk": 83,
+    "purpose": "نقل البيانات من مصدر التوليد إلى بيئة الإدارة دون فقد بتات أو هوية أو علاقة الملفات ببعضها.",
+    "inputs": [
+      "raw files",
+      "source manifest",
+      "sample/run identifiers",
+      "transfer source"
+    ],
+    "operations": [
+      "transfer",
+      "checksum/fixity capture",
+      "manifest creation",
+      "schema/format sanity checks",
+      "quarantine عند الفشل"
+    ],
+    "outputs": [
+      "ingested raw zone",
+      "transfer manifest",
+      "fixity values",
+      "ingest event log"
+    ],
+    "failures": [
+      {
+        "t": "نقل ناقص أو corrupted",
+        "d": "فقد أو تغير بتات قد لا يظهر فورًا في التحليل."
+      },
+      {
+        "t": "فقد أسماء/هيكل الملفات",
+        "d": "تنكسر العلاقة بين مكونات experiment/run."
+      },
+      {
+        "t": "الكتابة فوق raw",
+        "d": "تفقد القدرة على الرجوع إلى الأصل أو تدقيق التحولات."
+      }
+    ],
+    "signals": [
+      "checksum mismatch",
+      "byte/file counts مختلفة",
+      "orphan files",
+      "تاريخ تعديل raw بعد ingest"
+    ],
+    "controls": [
+      "checksum before/after",
+      "immutable/WORM-like raw policy حيث يلزم",
+      "manifest + audit log",
+      "separate raw and derived zones"
+    ],
+    "records": [
+      "checksums",
+      "ingest timestamp",
+      "source→target manifest",
+      "operator/process identity",
+      "failure/retry log"
+    ],
+    "refs": [
+      "S5",
+      "S6",
+      "S8"
+    ]
+  },
+  {
+    "id": "process",
+    "num": "05",
+    "name": "المعالجة وQA/QC والتحويل",
+    "en": "Process, QA/QC & Transform",
+    "icon": "⚙️",
+    "risk": 92,
+    "purpose": "تحويل الخام إلى بيانات منسقة أو مشتقة مع جعل كل تغيير ظاهرًا، قابلاً للتدقيق، واختباره ضد قيود المعنى.",
+    "inputs": [
+      "raw/ingested data",
+      "schema",
+      "units/vocabularies",
+      "quality rules",
+      "transformation code"
+    ],
+    "operations": [
+      "cleaning",
+      "normalization",
+      "unit conversion",
+      "joins",
+      "deduplication",
+      "outlier handling",
+      "validation"
+    ],
+    "outputs": [
+      "curated/derived datasets",
+      "QC report",
+      "transformation log",
+      "rejected/quarantined records"
+    ],
+    "failures": [
+      {
+        "t": "Silent semantic coercion",
+        "d": "مثل تحويل gene symbols تلقائيًا؛ الملف يبدو صالحًا لكن المعنى تغيّر."
+      },
+      {
+        "t": "Join أو key خاطئ",
+        "d": "تُركب علاقات غير حقيقية ويمكن أن تنتشر إلى كل النتائج."
+      },
+      {
+        "t": "تنظيف مدمر",
+        "d": "حذف outliers أو قيم غير عادية دون قاعدة موثقة قد يغير الاستنتاج."
+      }
+    ],
+    "signals": [
+      "row-count drift غير مبرر",
+      "unit/domain violations",
+      "distribution shift بعد التحويل",
+      "diff غير متوقع بين الإصدارات"
+    ],
+    "controls": [
+      "versioned scripts لا manual edits كمسار أساسي",
+      "schema + unit validation",
+      "invariants/reconciliation tests",
+      "reversible transformations"
+    ],
+    "records": [
+      "code commit/version",
+      "input/output hashes",
+      "QC results",
+      "rules applied",
+      "rejected records + reason"
+    ],
+    "refs": [
+      "S1",
+      "S18",
+      "S4"
+    ]
+  },
+  {
+    "id": "analyze",
+    "num": "06",
+    "name": "التحليل والحوسبة والتفسير",
+    "en": "Analyze, Compute & Interpret",
+    "icon": "📊",
+    "risk": 91,
+    "purpose": "تحويل البيانات المنسقة إلى نتائج واستنتاجات مع تثبيت الكود والبيئة والإعدادات وتعريف معيار النجاح لإعادة التشغيل.",
+    "inputs": [
+      "curated data",
+      "analysis code",
+      "environment",
+      "parameters",
+      "statistical/model assumptions"
+    ],
+    "operations": [
+      "statistics",
+      "simulation",
+      "ML/modeling",
+      "visualization",
+      "sensitivity checks",
+      "interpretation"
+    ],
+    "outputs": [
+      "results",
+      "figures",
+      "models",
+      "derived data",
+      "analysis logs"
+    ],
+    "failures": [
+      {
+        "t": "بيئة برمجية غير مثبتة",
+        "d": "قد يتعذر الحصول على النتائج نفسها لاحقًا حتى مع نفس البيانات والكود."
+      },
+      {
+        "t": "Data leakage / misuse",
+        "d": "تنتج مقاييس متفائلة أو استنتاجات لا تصمد خارج الإعداد الأصلي."
+      },
+      {
+        "t": "تفسير يتجاوز التصميم",
+        "d": "صحة الحساب لا تعني صحة الاستنتاج السببي أو التعميم."
+      }
+    ],
+    "signals": [
+      "rerun mismatch",
+      "dependency drift",
+      "train/test contamination",
+      "نتائج شديدة الحساسية لإعداد واحد"
+    ],
+    "controls": [
+      "lockfile/container where useful",
+      "versioned code + parameters",
+      "random seeds where relevant",
+      "sensitivity/robustness checks",
+      "acceptance tolerance محددة"
+    ],
+    "records": [
+      "code revision",
+      "environment manifest",
+      "parameters/seeds",
+      "input dataset version",
+      "run logs",
+      "acceptance criteria"
+    ],
+    "refs": [
+      "S11",
+      "S16",
+      "S1"
+    ]
+  },
+  {
+    "id": "package",
+    "num": "07",
+    "name": "التوصيف والتعبئة وربط الأدلة",
+    "en": "Describe, Package & Link Evidence",
+    "icon": "🧬",
+    "risk": 86,
+    "purpose": "تجميع البيانات والنتائج مع metadata وprovenance والهوية والإصدارات والحقوق بحيث يصبح الناتج Research Object قابلًا للفهم آليًا وبشريًا.",
+    "inputs": [
+      "data + code + outputs",
+      "metadata",
+      "provenance",
+      "identifiers",
+      "rights/license"
+    ],
+    "operations": [
+      "metadata completion",
+      "provenance graph",
+      "version linking",
+      "PID preparation",
+      "research-object packaging"
+    ],
+    "outputs": [
+      "self-describing research package",
+      "machine-readable metadata",
+      "provenance chain",
+      "version relationships"
+    ],
+    "failures": [
+      {
+        "t": "Metadata بلا معنى مجالي",
+        "d": "قد تكون هناك حقول كثيرة لكن لا تكفي لفهم الاستخدام العلمي."
+      },
+      {
+        "t": "Provenance gap",
+        "d": "لا يمكن ربط نتيجة مشتقة بمدخلها أو النشاط الذي أنشأها."
+      },
+      {
+        "t": "Version ambiguity",
+        "d": "يُقتبس dataset أو code دون معرفة أي نسخة أنتجت النتيجة."
+      }
+    ],
+    "signals": [
+      "derived artifact بلا parent",
+      "حقول required ناقصة",
+      "version غير مذكور",
+      "لا توجد علاقة paper↔data↔code"
+    ],
+    "controls": [
+      "DataCite + domain metadata",
+      "W3C PROV mapping",
+      "explicit version relations",
+      "RO-Crate أو package مماثل حيث يناسب"
+    ],
+    "records": [
+      "metadata document",
+      "provenance graph",
+      "PID/version map",
+      "license/rights",
+      "manifest"
+    ],
+    "refs": [
+      "S3",
+      "S4",
+      "S7",
+      "S16"
+    ]
+  },
+  {
+    "id": "preserve",
+    "num": "08",
+    "name": "التخزين والنسخ والحفظ طويل الأجل",
+    "en": "Store, Backup & Preserve",
+    "icon": "🗄️",
+    "risk": 88,
+    "purpose": "الحفاظ على البتات والمعنى وقابلية الوصول عبر الزمن، لا مجرد وجود نسخة على وسيط تخزين.",
+    "inputs": [
+      "research package",
+      "retention decision",
+      "checksums",
+      "representation information"
+    ],
+    "operations": [
+      "redundant storage",
+      "backup",
+      "fixity audits",
+      "restore tests",
+      "format monitoring/migration",
+      "preservation metadata"
+    ],
+    "outputs": [
+      "preserved copies",
+      "fixity history",
+      "restore evidence",
+      "preservation events",
+      "migration records"
+    ],
+    "failures": [
+      {
+        "t": "اعتبار backup = preservation",
+        "d": "النسخة الاحتياطية وحدها لا تضمن بقاء المعنى أو قابلية القراءة أو سلامة طويلة الأجل."
+      },
+      {
+        "t": "Bit rot / corruption",
+        "d": "تغير غير مرغوب قد يبقى صامتًا دون fixity checks."
+      },
+      {
+        "t": "Format/software obsolescence",
+        "d": "قد تبقى البتات سليمة لكن لا يمكن تفسيرها أو تشغيلها."
+      }
+    ],
+    "signals": [
+      "checksum mismatch",
+      "restore test يفشل",
+      "format unsupported",
+      "نسخة واحدة في fault domain واحد"
+    ],
+    "controls": [
+      "geographic/technical redundancy حسب المخاطر",
+      "scheduled fixity",
+      "tested restore",
+      "representation information",
+      "migration strategy"
+    ],
+    "records": [
+      "checksum history",
+      "storage locations",
+      "backup/restore logs",
+      "PREMIS-like events",
+      "migration rationale"
+    ],
+    "refs": [
+      "S5",
+      "S6",
+      "S8",
+      "S20"
+    ]
+  },
+  {
+    "id": "share",
+    "num": "09",
+    "name": "النشر والمشاركة والاكتشاف والوصول",
+    "en": "Publish, Share, Discover & Access",
+    "icon": "🌐",
+    "risk": 81,
+    "purpose": "إتاحة كائن بحثي محدد النسخة وقابل للاكتشاف والاستشهاد، مع شروط وصول وترخيص واضحة وفي مستودع مناسب.",
+    "inputs": [
+      "publishable package",
+      "metadata",
+      "license/access terms",
+      "repository choice"
+    ],
+    "operations": [
+      "deposit",
+      "PID minting",
+      "indexing",
+      "access control",
+      "citation creation",
+      "landing page"
+    ],
+    "outputs": [
+      "citable version",
+      "persistent landing page",
+      "discoverable metadata",
+      "declared access conditions"
+    ],
+    "failures": [
+      {
+        "t": "رابط بلا PID/landing page",
+        "d": "link rot أو content drift يضعف إمكانية التحقق اللاحق."
+      },
+      {
+        "t": "License/access غامض",
+        "d": "قد تكون البيانات قابلة للتحميل لكنها غير قابلة لإعادة الاستخدام قانونيًا."
+      },
+      {
+        "t": "مستودع غير مناسب",
+        "d": "قد لا يضمن الاستدامة، provenance، retention أو metadata المطلوبة للمجال."
+      }
+    ],
+    "signals": [
+      "PID لا resolve",
+      "landing page بلا version/license",
+      "المستودع لا يوضح retention/provenance"
+    ],
+    "controls": [
+      "trusted/established repository",
+      "PID + version",
+      "explicit license/access process",
+      "rich discovery metadata"
+    ],
+    "records": [
+      "deposit receipt",
+      "PID",
+      "repository policy snapshot",
+      "license",
+      "published metadata"
+    ],
+    "refs": [
+      "S3",
+      "S7",
+      "S9",
+      "S10",
+      "S14",
+      "S19"
+    ]
+  },
+  {
+    "id": "reuse",
+    "num": "10",
+    "name": "إعادة الاستخدام وإعادة الإنتاج والتكرار",
+    "en": "Reuse, Reproduce & Replicate",
+    "icon": "♻️",
+    "risk": 90,
+    "purpose": "اختبار ما إذا كان شخص آخر أو فريق لاحق يستطيع فهم البيانات وتقييم ملاءمتها وإعادة تشغيل الحساب أو جمع بيانات جديدة للتحقق المستقل.",
+    "inputs": [
+      "published research object",
+      "documentation",
+      "code/environment",
+      "access rights",
+      "domain knowledge"
+    ],
+    "operations": [
+      "fitness-for-use assessment",
+      "computational rerun",
+      "integration with other data",
+      "new-data replication where relevant"
+    ],
+    "outputs": [
+      "reproduced result أو discrepancy",
+      "new analysis",
+      "replication evidence",
+      "reuse citation/derivative"
+    ],
+    "failures": [
+      {
+        "t": "السياق موجود في رأس الباحث فقط",
+        "d": "الملفات تصل لكن لا يمكن تفسيرها بثقة."
+      },
+      {
+        "t": "Dependency / environment drift",
+        "d": "إعادة التشغيل تفشل لأسباب تشغيلية لا علمية."
+      },
+      {
+        "t": "Reuse خارج نطاق صلاحية البيانات",
+        "d": "FAIRness لا تعني أن البيانات مناسبة لكل سؤال جديد."
+      }
+    ],
+    "signals": [
+      "طلب توضيحات أساسية من المؤلف",
+      "لا يمكن تحديد dataset/code version",
+      "نتيجة rerun خارج tolerance"
+    ],
+    "controls": [
+      "documented scope/limitations",
+      "reproducibility check before publication",
+      "research-object package",
+      "reuse feedback loop"
+    ],
+    "records": [
+      "rerun report",
+      "environment used",
+      "discrepancies",
+      "new-data protocol for replication",
+      "reuse citation"
+    ],
+    "refs": [
+      "S1",
+      "S11",
+      "S16",
+      "S17"
+    ]
+  }
+]

@@ -1,0 +1,465 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Evidence-backed interactive atlas of the scientific data lifecycle: stages, failures, controls, provenance, preservation, FAIR, reproducibility and materials-science lens.">
+<title>Scientific Data Lifecycle Atlas — دورة حياة البيانات العلمية</title>
+<style>
+:root{
+  --bg:#f6f2eb;--paper:#fffdfa;--paper2:#fff;--ink:#182337;--muted:#667085;
+  --line:#dde2e8;--teal:#087f78;--teal2:#dff8f4;--navy:#1e2b40;--navy2:#26374f;
+  --red:#bb2635;--redbg:#fff0f2;--amber:#9a5b00;--amberbg:#fff8e6;
+  --green:#087a55;--greenbg:#ebfbf4;--blue:#2756a3;--bluebg:#eff5ff;
+  --violet:#6656a8;--violetbg:#f4f1ff;--shadow:0 10px 30px rgba(18,32,51,.075)
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Tahoma,"Segoe UI",Arial,sans-serif;line-height:1.75}
+button,input,select{font:inherit}
+a{color:inherit}
+.top{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav{max-width:1250px;margin:auto;padding:10px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{font-weight:900;white-space:nowrap}.brand em{color:var(--teal);font-style:normal}
+.navlinks{display:flex;gap:4px;overflow-x:auto}
+.navlinks button{border:0;background:transparent;cursor:pointer;padding:8px 11px;color:#515b68;white-space:nowrap;border-radius:8px}
+.navlinks button:hover{background:#f5f7f8}.navlinks button.active{color:var(--teal);background:#edf9f7;font-weight:800}
+.actions{display:flex;gap:7px}.btn{border:1px solid var(--line);background:#fff;border-radius:9px;padding:7px 10px;cursor:pointer;white-space:nowrap}
+.btn.primary{background:var(--navy);color:#fff;border-color:var(--navy)}
+.hero{background:radial-gradient(circle at 20% 5%,#e4f7f2 0,transparent 28%),linear-gradient(180deg,#f4eee5,#faf8f5);border-bottom:1px solid var(--line)}
+.heroInner{max-width:1120px;margin:auto;padding:42px 20px 38px;text-align:center}
+.eyebrow{display:inline-block;background:var(--teal2);color:var(--teal);padding:3px 12px;border-radius:999px;font-weight:800;font-size:12px}
+h1{font-size:38px;line-height:1.25;margin:15px 0 10px;letter-spacing:-.5px}
+.hero p{max-width:850px;margin:0 auto;color:#635f5b}
+.heroMeta{margin-top:14px;font-size:12px;color:#7a7773}
+.heroCards{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:28px;text-align:right}
+.heroCard{background:rgba(255,255,255,.88);border:1px solid #dedede;border-radius:13px;padding:15px;box-shadow:0 4px 14px rgba(0,0,0,.03)}
+.heroCard strong{display:block;font-size:16px;margin:4px 0}.heroCard small{color:var(--muted)}
+main{max-width:1120px;margin:28px auto 65px;padding:0 18px}
+.view.hidden{display:none}
+.panel{background:var(--paper);border:1px solid #dfe2e5;border-radius:16px;padding:22px;box-shadow:var(--shadow);margin-bottom:22px}
+.panel h2{margin:0 0 7px;font-size:25px}.sub{color:var(--muted);margin-top:0;font-size:14px}
+.sectionTitle{font-size:20px;color:#183c88;border-bottom:1px solid #dae3f4;padding-bottom:7px;margin:26px 0 13px}
+.tag{display:inline-flex;align-items:center;gap:5px;border:1px solid #d9dde3;border-radius:999px;padding:2px 8px;font-size:11px;background:#fff;color:#59616d}
+.tag.fact{border-color:#a4e1d8;color:var(--teal);background:#f0fffc}.tag.synth{border-color:#d7cdfa;color:var(--violet);background:var(--violetbg)}
+.notice{border-radius:11px;padding:13px 15px;margin:12px 0;font-size:13px}.notice.amber{background:var(--amberbg);border:1px solid #f1d27e;color:#704900}.notice.blue{background:var(--bluebg);border:1px solid #c9d9fb}.notice.dark{background:var(--navy);color:#fff}.notice.dark b{color:#65e4d8}
+.stageTabs{display:flex;gap:8px;overflow-x:auto;padding:6px 0 12px;border-bottom:4px solid #e8dfd4}
+.stageTabs button{border:1px solid #d7dce1;background:#fff;color:#4b5563;border-radius:10px;padding:8px 11px;cursor:pointer;white-space:nowrap;font-weight:700}
+.stageTabs button.active{background:#effbf9;color:var(--teal);border-color:#8bd6ce}
+.stageCard{margin-top:14px;border:1px solid #d9dde2;background:#fcfbf8;border-radius:14px;padding:17px}
+.stageHead{display:flex;justify-content:space-between;gap:16px;align-items:flex-start}
+.stageIdentity{display:flex;gap:11px;align-items:center}.stageIcon{width:47px;height:47px;display:grid;place-items:center;background:#eaf9f7;border-radius:12px;font-size:25px}
+.stageNo{font-size:11px;color:var(--teal);font-weight:900}.stageName{font-size:21px;font-weight:900;line-height:1.35}.stageEn{font-size:12px;color:var(--muted)}
+.riskBlock{min-width:155px;font-size:11px;color:var(--muted)}.riskTrack{height:7px;background:#e4e7ec;border-radius:20px;overflow:hidden;margin-top:5px}.riskFill{height:100%;border-radius:20px;background:linear-gradient(90deg,#f2b84b,#df4a5a)}
+.stagePurpose{font-size:14px;margin:15px 0;padding:10px 12px;background:#fff;border-right:3px solid var(--teal);border-radius:7px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.box{border:1px solid #dfe3e8;background:#fff;border-radius:11px;padding:12px}.box h4{margin:0 0 5px;font-size:14px}.box p,.box li{font-size:12.5px;margin:0}.box ul{margin:5px 0 0;padding-right:19px}
+.box.red{background:var(--redbg);border-color:#fac0c7}.box.amber{background:var(--amberbg);border-color:#f3d27f}.box.green{background:var(--greenbg);border-color:#9ce3c8}.box.blue{background:var(--bluebg);border-color:#c3d7fb}
+.failItem{padding:8px 0;border-bottom:1px dashed #e1e3e6}.failItem:last-child{border:0}.failItem b{color:var(--red)}
+.chips{display:flex;flex-wrap:wrap;gap:6px}.srcChip{display:inline-flex;align-items:center;gap:4px;font-size:11px;padding:3px 7px;border-radius:7px;border:1px solid #cfd5db;background:#fff;color:#394456;text-decoration:none}.srcChip:hover{border-color:var(--teal);color:var(--teal)}
+.pipeline{padding:18px;border:1px solid #d6e0ed;background:#f8fbff;border-radius:13px}
+.pipeRow{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:7px}.node{padding:7px 11px;border:1px solid #76bdb6;background:#fff;border-radius:8px;font-weight:800;font-size:12px}.arr{color:var(--teal);font-weight:900}
+.cross{display:grid;grid-template-columns:repeat(6,1fr);gap:7px;margin-top:16px;padding-top:15px;border-top:1px dashed #ccd5e0}.cross div{text-align:center;border-radius:8px;padding:8px 5px;font-size:11px;font-weight:800}
+.c1{background:#fff5de;border:1px solid #f2c95e}.c2{background:#fff0f2;border:1px solid #f4acb6}.c3{background:#eef1ff;border:1px solid #aeb8ff}.c4{background:#eafffa;border:1px solid #82decf}.c5{background:#f5efff;border:1px solid #ccb7fa}.c6{background:#eef9ff;border:1px solid #aadcf0}
+.caseCards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.case{border:1px solid #dfe3e8;background:#fff;border-radius:12px;padding:14px}.case .stat{font-size:25px;color:var(--teal);font-weight:900}.case h4{margin:2px 0}.case small{color:var(--muted)}.case .caution{margin-top:7px;padding-top:7px;border-top:1px dashed #ddd;color:#8b5a00;font-size:11px}
+table{width:100%;border-collapse:collapse;font-size:12.5px}th{background:var(--navy);color:#fff;text-align:right;padding:10px;border:1px solid #fff}td{padding:10px;border:1px solid #dce1e8;vertical-align:top;background:#fff}
+.tableWrap{overflow:auto}
+.controls{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}.search{flex:1;min-width:220px;border:1px solid #ccd2da;border-radius:9px;padding:9px 11px;background:#fff}.select{border:1px solid #ccd2da;border-radius:9px;padding:9px;background:#fff}
+.modelGrid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.model{border:1px solid #dfe3e8;background:#fff;border-radius:12px;padding:14px}.model h4{margin:0 0 5px}.model .role{font-size:12px}.model .not{font-size:11px;color:#8c5a00;background:#fff9e9;border-radius:7px;padding:6px;margin-top:8px}
+.simLayout{display:grid;grid-template-columns:320px 1fr;gap:15px}.scenarioList{display:flex;flex-direction:column;gap:7px}.scenarioList button{text-align:right;border:1px solid #d8dde4;background:#fff;border-radius:9px;padding:10px;cursor:pointer}.scenarioList button.active{border-color:#e69ba7;background:#fff2f4;color:#92192a;font-weight:800}
+.propagation{display:flex;gap:6px;flex-wrap:wrap;margin:14px 0}.pnode{padding:7px 9px;border:1px solid #d6dce3;border-radius:8px;background:#f7f8fa;font-size:11px}.pnode.hit{background:#fff0f2;border-color:#ef9fad;color:#9d1d2d;font-weight:800}
+.bigRisk{display:inline-block;padding:3px 9px;border-radius:999px;background:#fff0f2;color:#b32234;font-size:11px;font-weight:900}
+.metricGrid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.metricBox{border:1px solid #dfe3e8;background:#fff;border-radius:12px;padding:14px}.formula{font-family:Consolas,monospace;direction:ltr;text-align:center;background:#f7f8fa;border:1px solid #e2e5e8;padding:8px;border-radius:8px;margin:8px 0;font-size:12px}.metricBox .caveat{font-size:11px;color:#8a5c05}
+.auditGrid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.audit{border:1px solid #ddd;background:#fff;border-radius:11px;padding:13px}.audit b{display:block;margin-bottom:3px}.audit p{font-size:12px;margin:0;color:#59616c}
+.refCard{border:1px solid #dfe3e8;background:#fff;border-radius:11px;padding:13px;margin:8px 0}.refTop{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}.refId{font-weight:900;color:var(--teal)}.refCard h4{margin:0 0 2px;font-size:14px}.refCard p{margin:5px 0;font-size:12px}.refMeta{font-size:11px;color:var(--muted)}.refLink{display:inline-block;color:#174a9b;font-size:11px;margin-top:4px}
+.lensTabs{display:flex;gap:7px;flex-wrap:wrap;margin:10px 0}.lensTabs button{border:1px solid #d7dce2;background:#fff;border-radius:8px;padding:7px 10px;cursor:pointer}.lensTabs button.active{background:#edf9f7;color:var(--teal);border-color:#99d9d2;font-weight:800}
+.lensList{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}.lensItem{background:#fff;border:1px solid #dfe3e8;border-radius:9px;padding:10px;font-size:12px}
+.footer{max-width:1120px;margin:0 auto 40px;padding:0 18px;color:#7d838d;font-size:11px;text-align:center}
+code{direction:ltr;display:inline-block;background:#f2f4f7;border-radius:4px;padding:0 4px}
+@media(max-width:920px){.heroCards,.grid3,.caseCards,.cross{grid-template-columns:repeat(2,1fr)}.simLayout{grid-template-columns:1fr}.modelGrid,.metricGrid,.auditGrid{grid-template-columns:1fr}}
+@media(max-width:700px){.nav{align-items:flex-start;flex-direction:column}.actions{display:none}h1{font-size:29px}.heroCards,.grid2,.grid3,.caseCards,.cross,.lensList{grid-template-columns:1fr}.stageHead{flex-direction:column}.riskBlock{width:100%}}
+@media print{.top,.actions,.stageTabs,.controls,.lensTabs{display:none!important}.hero{background:#fff}.panel{box-shadow:none;break-inside:avoid}body{background:#fff}.view.hidden{display:block!important}}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="nav">
+    <div class="brand">🧬 <em>Scientific Data Lifecycle Atlas</em></div>
+    <div class="navlinks" id="navLinks">
+      <button class="active" data-view="overview">الخريطة</button>
+      <button data-view="models">النماذج</button>
+      <button data-view="failures">محاكي الانهيار</button>
+      <button data-view="quality">Quality Gates</button>
+      <button data-view="materials">عدسة المواد</button>
+      <button data-view="project">ربط المشروع</button>
+      <button data-view="references">المراجع</button>
+      <button data-view="audit">التدقيق النقدي</button>
+    </div>
+    <div class="actions">
+      <button class="btn" id="exportBtn">تصدير JSON</button>
+      <button class="btn primary" onclick="window.print()">طباعة / PDF</button>
+    </div>
+  </div>
+</header>
+
+<section class="hero" id="hero">
+  <div class="heroInner">
+    <span class="eyebrow">Evidence-backed • primary standards first • updated 2026-08-23</span>
+    <h1>دورة حياة البيانات العلمية: من تصميم المعرفة إلى إعادة استخدامها</h1>
+    <p>مرجع تفاعلي يفصل بين <b>ما تقوله المعايير والمصادر</b> وبين <b>التوليف التشغيلي</b>، ويربط كل مرحلة بمدخلاتها ومخرجاتها، أنماط الفشل، إشارات الكشف، الضوابط، وسجل الأدلة الذي يجب الاحتفاظ به.</p>
+    <div class="heroMeta">Backbone: NIST RDaF 2.0 • Preservation: OAIS 2025 / PREMIS 3.0 / NDSA 2.1 • Metadata: DataCite 4.7 • Research Object: RO-Crate 1.3</div>
+    <div class="heroCards">
+      <div class="heroCard">🧪<strong>Raw ≠ Valid</strong><small>سلامة الملف لا تثبت صحة القياس أو العينة.</small></div>
+      <div class="heroCard">🧬<strong>FAIR ≠ Quality</strong><small>FAIR يركز على الاكتشاف والوصول والتشغيل البيني وإعادة الاستخدام، لا intrinsic quality.</small></div>
+      <div class="heroCard">🔐<strong>Backup ≠ Preservation</strong><small>الحفظ طويل الأجل يضيف integrity monitoring، سياقًا، واستراتيجية استمرار.</small></div>
+      <div class="heroCard">♻️<strong>Reuse is the stress test</strong><small>تظهر فجوات metadata، provenance، environment والحقوق عند محاولة الاستخدام خارج المختبر الأصلي.</small></div>
+    </div>
+  </div>
+</section>
+
+<main>
+<section class="view" id="overview">
+  <div class="panel">
+    <div class="chips"><span class="tag fact">FACT / SOURCE-ANCHORED</span><span class="tag synth">SYNTHESIS / OPERATIONAL MODEL</span></div>
+    <h2>كيف بُني هذا الأطلس؟</h2>
+    <p class="sub">لا يوجد «نموذج وحيد حقيقي» لدورة حياة البيانات. لذلك نستخدم NIST RDaF كـbackbone موثوق، ثم نفككه تشغيليًا إلى 10 نقاط تحكم كي يصبح قابلًا للتطبيق والمراجعة.</p>
+    <div class="notice blue"><b>قاعدة منهجية:</b> المراحل العشر أدناه <b>توليف تشغيلي</b> وليست standard جديدًا. الـMetadata والـProvenance والجودة والأمن والأخلاق والتكلفة وظائف <b>cross-cutting</b> لا تنتظر مرحلة واحدة.</div>
+
+    <div class="pipeline">
+      <div class="pipeRow">
+        <span class="node">التصور</span><span class="arr">←</span><span class="node">التخطيط</span><span class="arr">←</span>
+        <span class="node">التوليد</span><span class="arr">←</span><span class="node">Ingest</span><span class="arr">←</span>
+        <span class="node">QA/Transform</span><span class="arr">←</span><span class="node">التحليل</span><span class="arr">←</span>
+        <span class="node">التعبئة</span><span class="arr">←</span><span class="node">الحفظ</span><span class="arr">←</span>
+        <span class="node">النشر</span><span class="arr">←</span><span class="node">إعادة الاستخدام</span>
+      </div>
+      <div class="cross">
+        <div class="c1">🗂️ Metadata<br>مستمر</div><div class="c2">🧬 Provenance<br>مستمر</div>
+        <div class="c3">✅ Quality<br>مستمر</div><div class="c4">🔐 Security/Integrity<br>مستمر</div>
+        <div class="c5">⚖️ Ethics/Rights<br>مستمر</div><div class="c6">💰 Cost/Sustainability<br>مستمر</div>
+      </div>
+    </div>
+
+    <h3 class="sectionTitle">مستكشف المرحلة</h3>
+    <div class="stageTabs" id="stageTabs"></div>
+    <div class="stageCard" id="stageCard"></div>
+  </div>
+
+  <div class="panel">
+    <h2>أمثلة موثقة: أين تتحول مشكلة صغيرة إلى كسر في السلسلة؟</h2>
+    <p class="sub">هذه دراسات سياقية وليست معدلات عالمية. الغرض منها إظهار آليات فشل حقيقية.</p>
+    <div class="caseCards" id="caseCards"></div>
+  </div>
+
+  <div class="panel">
+    <h2>ستة تمييزات تمنع أخطاء مفاهيمية شائعة</h2>
+    <div class="grid2">
+      <div class="box"><h4>FAIR ≠ Open</h4><p>FAIR يسمح authentication/authorization عند الحاجة؛ البيانات المقيدة يمكن أن تكون FAIR إذا كانت شروط الوصول موصوفة بوضوح. <span class="src-inline" data-refs="S3,S15"></span></p></div>
+      <div class="box"><h4>FAIR ≠ intrinsic quality</h4><p>FAIR يساعدك على العثور والفهم وإعادة الاستخدام، لكنه لا يثبت أن القياس صحيح أو أن العينة ممثلة. <span class="src-inline" data-refs="S15,S1"></span></p></div>
+      <div class="box"><h4>Backup ≠ Preservation</h4><p>الـbackup يعالج أساسًا الاسترجاع؛ preservation يضيف سلامة طويلة الأجل، سياقًا، migration، وسياسات ومسؤولية. <span class="src-inline" data-refs="S20,S5"></span></p></div>
+      <div class="box"><h4>Integrity ≠ Authenticity</h4><p>checksum يمكن أن يثبت أن البتات لم تتغير عن baseline؛ لا يثبت وحده أن الكائن هو النسخة الموثوقة أو أن أصلها صحيح. <span class="src-inline" data-refs="S6,S5"></span></p></div>
+      <div class="box"><h4>Metadata ≠ Provenance</h4><p>Metadata تصف الكائن؛ provenance يصف كيف نشأ ومن/ما شارك في تكوينه. قد تتقاطعان لكنهما ليسا مترادفين. <span class="src-inline" data-refs="S4,S7"></span></p></div>
+      <div class="box"><h4>Reproducibility ≠ Replicability</h4><p>هنا نعتمد تعريف NASEM: reproducibility حسابية باستخدام نفس data/code/conditions؛ replication تختبر نتائج متسقة عبر دراسة جديدة/بيانات جديدة. <span class="src-inline" data-refs="S11"></span></p></div>
+    </div>
+  </div>
+</section>
+
+<section class="view hidden" id="models">
+  <div class="panel">
+    <h2>النماذج والمعايير: ماذا يفعل كل واحد — وماذا لا يفعل؟</h2>
+    <p class="sub">أخطر خطأ منهجي هو دمج FAIR وOAIS وPROV وDCC كما لو كانت نسخًا من نفس النموذج.</p>
+    <div class="modelGrid" id="modelGrid"></div>
+  </div>
+  <div class="panel">
+    <h2>NIST RDaF 2.0 كـBackbone</h2>
+    <p>RDaF يعرّف lifecycle <b>دوريًا لا خطيًا</b>: <b>Envision → Plan → Generate/Acquire → Process/Analyze → Share/Use/Reuse → Preserve/Discard</b>، مع إمكانية الانتقال بين المراحل بمرونة ووجود themes تعبر أكثر من مرحلة. الأطلس الحالي يفكك هذه المناطق إلى نقاط تحكم تشغيلية أكثر دقة دون ادعاء أنها taxonomy معيارية جديدة.</p>
+    <div class="notice amber">لماذا لم نستخدم FAIR كـlifecycle؟ لأن FAIR مبادئ خصائص للـdigital objects، والورقة الأصلية تصرح بأنها لا تفرض تقنية أو implementation محددًا وليست standard/specification في حد ذاتها.</div>
+  </div>
+</section>
+
+<section class="view hidden" id="failures">
+  <div class="panel">
+    <h2>محاكي انتشار الفشل (Failure Propagation)</h2>
+    <p class="sub">اختر root failure لترى أين يمكن أن ينتشر. الخريطة سببية/تشغيلية تقريبية وليست probability model.</p>
+    <div class="simLayout">
+      <div class="scenarioList" id="scenarioList"></div>
+      <div class="box" id="scenarioDetail"></div>
+    </div>
+  </div>
+  <div class="panel">
+    <h2>قاعدة مهمة: الاكتشاف المتأخر لا يعني أن الخطأ بدأ متأخرًا</h2>
+    <p>قد يُكتشف failure عند إعادة الاستخدام بينما جذره في التوليد أو المعالجة. لذلك يجب تصميم كل مرحلة بحيث تنتج <b>evidence</b> يمكن للمرحلة التالية اختباره، بدل أن تتسلم «ملفًا فقط».</p>
+  </div>
+</section>
+
+<section class="view hidden" id="quality">
+  <div class="panel">
+    <h2>Quality Gates قابلة للقياس</h2>
+    <p class="sub">هذه metrics مقترحة تشغيليًا وليست thresholds عالمية. يجب أن تحدد المؤسسة numerator/denominator والتسامح والـSLA قبل استخدامها كقرار.</p>
+    <div class="metricGrid" id="metricGrid"></div>
+  </div>
+  <div class="panel">
+    <h2>Gate checklist حسب المرحلة</h2>
+    <div class="tableWrap">
+      <table><thead><tr><th>المرحلة</th><th>Minimum Gate</th><th>Evidence retained</th><th>مصادر</th></tr></thead><tbody id="gateTable"></tbody></table>
+    </div>
+  </div>
+</section>
+
+<section class="view hidden" id="materials">
+  <div class="panel">
+    <h2>Materials Science Lens — ترجمة الإطار إلى سياق المواد</h2>
+    <p class="sub">هذه عدسة تطبيقية وليست schema إلزامية. الغرض إظهار ما الذي يتغير عندما تنتقل من RDM عام إلى materials data engineering.</p>
+    <div class="lensTabs">
+      <button class="active" data-lens="experimental">Experimental materials</button>
+      <button data-lens="computational">Computational materials</button>
+      <button data-lens="interop">Interoperability</button>
+    </div>
+    <div class="lensList" id="lensList"></div>
+    <div class="notice blue" style="margin-top:14px"><b>قاعدة تصميم:</b> DataCite ممتاز للتعريف والاستشهاد العام لكنه يصرح أن metadata العامة لا تستبدل domain-specific metadata. في computational materials، NOMAD مثال واضح على الحاجة إلى فصل <code>method</code> و<code>system</code> و<code>calculation</code> و<code>workflow</code>. <span class="src-inline" data-refs="S7,S21"></span></div>
+  </div>
+  <div class="panel">
+    <h2>Minimal evidence chain لمشروع بيانات مواد</h2>
+    <div class="pipeline">
+      <div class="pipeRow">
+        <span class="node">Material/Sample ID</span><span class="arr">←</span><span class="node">Protocol / Method</span><span class="arr">←</span>
+        <span class="node">Raw Data</span><span class="arr">←</span><span class="node">Transform Code</span><span class="arr">←</span>
+        <span class="node">Derived Data</span><span class="arr">←</span><span class="node">Analysis Environment</span><span class="arr">←</span>
+        <span class="node">Result + PID + License</span>
+      </div>
+    </div>
+    <div class="notice dark"><b>الحد الأدنى للدفاع العلمي:</b> لا تبنِ منصة «قاعدة بيانات مواد» حول rows فقط. ابنِ chain تربط <b>entity identity + measurement/computation context + transformations + provenance + versions + preservation + reuse conditions</b>.</div>
+  </div>
+</section>
+
+
+<section class="view hidden" id="project">
+  <div class="panel">
+    <div class="chips"><span class="tag synth">PROJECT INTEGRATION</span><span class="tag fact">SPECIFICATION-MAPPED • NOT RUNTIME-VERIFIED</span></div>
+    <h2>كيف يرتبط الـAtlas بالـMOF Scientific Data Platform؟</h2>
+    <p class="sub">هذه الصفحة تمنع الـAtlas من التحول إلى infographic منفصلة: كل مرحلة تُربط بعقد repository، entities، interfaces، tests، evidence متوقعة، وفجوة معلنة.</p>
+    <div class="notice amber"><b>حد الثقة:</b> الربط أدناه مبني على مواصفات المشروع الحالية. لا تُغيّر الحالة إلى <code>implemented</code> أو <code>verified</code> إلا بعد تشغيل الاختبارات وملاحظة النتيجة في checkout حقيقي للريبو.</div>
+    <div class="tableWrap">
+      <table>
+        <thead><tr><th>المرحلة</th><th>الحالة</th><th>Repository contract</th><th>Executable proof المطلوب</th><th>Gap</th></tr></thead>
+        <tbody id="projectMapTable"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h2>One Scientific Record Journey — SAMPLE-MOF-001</h2>
+    <p class="sub">Case contract واحد end-to-end. السجل illustrative فقط، وليس نتيجة بحثية. الهدف اختبار سلسلة الدليل.</p>
+    <div id="projectCaseHeader"></div>
+    <div class="tableWrap">
+      <table>
+        <thead><tr><th>Stage</th><th>Artifact</th><th>What must be provable</th><th>Verification state</th></tr></thead>
+        <tbody id="projectJourneyTable"></tbody>
+      </table>
+    </div>
+    <h3 class="sectionTitle">Failure Injection Contract</h3>
+    <div class="grid2" id="failureInjectionGrid"></div>
+  </div>
+
+  <div class="panel">
+    <h2>Epistemic Claims Registry</h2>
+    <p class="sub">كل claim مصنف حتى لا يختلط Standard مع Evidence أو Synthesis أو Project Decision أو Hypothesis.</p>
+    <div class="controls">
+      <select class="select" id="claimLabel"><option value="">كل التصنيفات</option></select>
+    </div>
+    <div id="claimList"></div>
+  </div>
+</section>
+
+<section class="view hidden" id="references">
+  <div class="panel">
+    <h2>سجل المصادر والإصدارات</h2>
+    <p class="sub">الأولوية للمعايير الأصلية، الهيئات الرسمية، ثم الأدلة peer-reviewed. ابحث أو رشّح حسب النوع.</p>
+    <div class="controls">
+      <input class="search" id="refSearch" placeholder="ابحث: OAIS, provenance, FAIR, preservation...">
+      <select class="select" id="refType"><option value="">كل الأنواع</option></select>
+    </div>
+    <div id="refList"></div>
+  </div>
+</section>
+
+<section class="view hidden" id="audit">
+  <div class="panel">
+    <h2>التدقيق النقدي للمنتج</h2>
+    <p class="sub">هذه ليست صفحة تسويقية؛ هنا حدود ما يمكن الدفاع عنه وما لا ينبغي ادعاؤه.</p>
+    <div class="auditGrid">
+      <div class="audit"><b>1. لا يوجد canonical lifecycle واحد.</b><p>اخترنا RDaF كـbackbone لأنه حديث، شامل، مبني بمشاركة واسعة، ويقول صراحة إن المراحل دورية وقابلة للتخصيص. DCC يضيف منظور curation؛ OAIS يركز preservation.</p></div>
+      <div class="audit"><b>2. حدود المراحل artificial جزئيًا.</b><p>في الواقع metadata/provenance/security/quality/cost تعمل طوال الدورة. فصلها إلى boxes لأغراض التشغيل فقط.</p></div>
+      <div class="audit"><b>3. Quality Gates هنا ليست standards.</b><p>الصيغ مثل metadata completeness وprovenance coverage مفيدة للإدارة، لكن لا يوجد threshold عالمي يجعل dataset «جيدة» تلقائيًا.</p></div>
+      <div class="audit"><b>4. Generic RDM لا يكفي للمواد.</b><p>إعادة الاستخدام العلمي تتطلب metadata مجالية؛ لذلك أضفنا materials lens ونشير إلى NOMAD/OPTIMADE بدل اختراع ontology عامة.</p></div>
+      <div class="audit"><b>5. FAIR لا يحل validity.</b><p>يمكن جعل dataset منحازة أو خاطئة أكثر قابلية للاكتشاف. صلاحية القياس/التصميم/التحليل تحتاج ضوابط مستقلة.</p></div>
+      <div class="audit"><b>6. Preservation ليست مجرد بنية تخزين.</b><p>OAIS/NDSA/PREMIS/CoreTrustSeal تتطلب مسؤوليات وعمليات وسياقًا ومراقبة، وليس object storage وحده.</p></div>
+      <div class="audit"><b>7. أمثلة الفشل لا تُعمم.</b><p>19.6% و17%/year و1-in-5 أرقام مرتبطة بتصاميم دراسات وسياقات محددة؛ استخدمت كأمثلة موثقة لا كـglobal prevalence.</p></div>
+      <div class="audit"><b>8. المجال القانوني/الخصوصية context-specific.</b><p>الأطلس يضع ethics/rights/security كوظائف cross-cutting لكنه لا يدعي إعطاء compliance قانوني عالمي أو بديل لمراجعة محلية.</p></div>
+      <div class="audit"><b>9. المصطلحات قد تختلف بين المجتمعات.</b><p>اعتمدنا NASEM للتفريق بين reproducibility وreplicability، لكن مجالات أخرى قد تعكس الاستخدام؛ لذلك يجب إعلان التعريف في أي ورقة/مشروع.</p></div>
+      <div class="audit"><b>10. Version date مهم.</b><p>الـatlas مُثبت إلى 2026-08-23؛ من المصادر الحديثة: OAIS 2025، DataCite 4.7، NDSA 2.1، CoreTrustSeal 2026–2028، RO-Crate 1.3.</p></div>
+    </div>
+  </div>
+  <div class="panel">
+    <h2>ما الذي يمكن ادعاؤه بثقة؟</h2>
+    <div class="grid2">
+      <div class="box green"><h4>يمكن الدفاع عنه</h4><ul><li>دورة البيانات غير خطية وبها cross-cutting themes.</li><li>provenance، metadata، preservation، PID والحقوق أبعاد مختلفة ومتكاملة.</li><li>backup وحده ليس preservation.</li><li>FAIR ليس quality ولا open بالضرورة.</li><li>reuse يكشف فجوات لا تظهر عند إنشاء الملف.</li></ul></div>
+      <div class="box red"><h4>لا ينبغي ادعاؤه</h4><ul><li>أن المراحل العشر standard عالمي.</li><li>أن metric واحدة تقيس «جودة البيانات» كلها.</li><li>أن FAIR dataset صحيحة علميًا تلقائيًا.</li><li>أن repository موثوق يجعل كل محتواه صحيحًا.</li><li>أن RO-Crate أو container يضمن reproducibility دون اختبار.</li></ul></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<div class="footer">
+  Scientific Data Lifecycle Atlas v1.1 • generated 2026-08-23 • standalone HTML, no external JavaScript dependencies • Arabic interface with English technical terminology
+</div>
+
+<script src="assets/atlas-data.js"></script>
+<script>
+const {
+  sources:SOURCES,
+  stages:STAGES,
+  failures:FAILURES,
+  standards:STANDARDS,
+  metrics:METRICS,
+  materials_lens:MATERIALS,
+  documented_cases:CASES,
+  project_mapping:PROJECT_MAPPING,
+  project_case:PROJECT_CASE,
+  claims:CLAIMS,
+  project_sources:PROJECT_SOURCES
+}=window.ATLAS_DATA;
+const srcMap=Object.fromEntries([...SOURCES,...PROJECT_SOURCES].map(x=>[x.id,x]));
+function chips(ids){
+  return `<span class="chips">${ids.map(id=>{
+    const s=srcMap[id]; if(!s) return "";
+    if(s.url) return `<a class="srcChip" href="${s.url}" target="_blank" rel="noopener" title="${s.title}">${id} ↗</a>`;
+    return `<span class="srcChip" title="${s.title} — ${s.path || "project specification"}">${id} · local</span>`;
+  }).join("")}</span>`;
+}
+document.querySelectorAll(".src-inline").forEach(el=>{el.innerHTML=chips(el.dataset.refs.split(","));});
+
+const tabs=document.getElementById("stageTabs"), stageCard=document.getElementById("stageCard");
+STAGES.forEach((s,i)=>{
+ const b=document.createElement("button"); b.innerHTML=`${s.num} · ${s.name}`; b.onclick=()=>renderStage(i); tabs.appendChild(b);
+});
+function renderStage(i){
+ const s=STAGES[i];
+ [...tabs.children].forEach((b,j)=>b.classList.toggle("active",j===i));
+ stageCard.innerHTML=`
+ <div class="stageHead">
+   <div class="stageIdentity"><div class="stageIcon">${s.icon}</div><div><div class="stageNo">OPERATIONAL STAGE ${s.num}</div><div class="stageName">${s.name}</div><div class="stageEn">${s.en}</div></div></div>
+   <div class="riskBlock">Failure criticality — conceptual, not probability
+      <div class="riskTrack"><div class="riskFill" style="width:${s.risk}%"></div></div>
+      <b>${s.risk}/100</b>
+   </div>
+ </div>
+ <div class="stagePurpose"><b>الغرض:</b> ${s.purpose}</div>
+ <div class="grid2">
+   <div class="box blue"><h4>📥 Inputs</h4><ul>${s.inputs.map(x=>`<li>${x}</li>`).join("")}</ul></div>
+   <div class="box"><h4>🔧 Operations</h4><ul>${s.operations.map(x=>`<li>${x}</li>`).join("")}</ul></div>
+   <div class="box"><h4>📤 Outputs</h4><ul>${s.outputs.map(x=>`<li>${x}</li>`).join("")}</ul></div>
+   <div class="box red"><h4>💥 Failure modes</h4>${s.failures.map(x=>`<div class="failItem"><b>${x.t}</b><p>${x.d}</p></div>`).join("")}</div>
+   <div class="box amber"><h4>🔎 Detection signals</h4><ul>${s.signals.map(x=>`<li>${x}</li>`).join("")}</ul></div>
+   <div class="box green"><h4>🛡️ Controls</h4><ul>${s.controls.map(x=>`<li>${x}</li>`).join("")}</ul></div>
+ </div>
+ <div class="box" style="margin-top:12px"><h4>🧾 Evidence to retain</h4><div class="chips">${s.records.map(x=>`<span class="tag">${x}</span>`).join("")}</div><div style="margin-top:8px">${chips(s.refs)}</div></div>`;
+}
+renderStage(2);
+
+document.getElementById("caseCards").innerHTML=CASES.map(c=>`
+ <div class="case"><div class="stat">${c.stat}</div><h4>${c.title}</h4><small>${c.scope}</small>
+ <p style="font-size:12px">${c.lesson}</p><div class="caution"><b>حد التعميم:</b> ${c.caution}</div><div style="margin-top:7px">${chips(c.refs)}</div></div>`).join("");
+
+document.getElementById("modelGrid").innerHTML=STANDARDS.map(m=>`
+ <div class="model"><h4>${m.name}</h4><div class="refMeta">${m.version}</div><p class="role"><b>وظيفته:</b> ${m.role}</p><div class="not"><b>ليس:</b> ${m.not}</div><div style="margin-top:8px">${chips(m.refs)}</div></div>`).join("");
+
+const scenarioList=document.getElementById("scenarioList"), scenarioDetail=document.getElementById("scenarioDetail");
+FAILURES.forEach((f,i)=>{
+ const b=document.createElement("button"); b.textContent=`${f.name} — ${f.severity}`; b.onclick=()=>renderFailure(i); scenarioList.appendChild(b);
+});
+function renderFailure(i){
+ const f=FAILURES[i]; [...scenarioList.children].forEach((b,j)=>b.classList.toggle("active",i===j));
+ scenarioDetail.innerHTML=`<span class="bigRisk">${f.severity}</span><h3 style="margin:7px 0">${f.name}</h3>
+ <div class="refMeta">${f.kind}</div><p>${f.desc}</p>
+ <h4>Propagation map</h4><div class="propagation">${STAGES.map(s=>`<span class="pnode ${f.prop.includes(s.id)?"hit":""}">${s.num} ${s.name}</span>`).join("")}</div>
+ <div class="grid2"><div class="box amber"><h4>🔎 كشف</h4><p>${f.detect}</p></div><div class="box green"><h4>🛡️ منع/احتواء</h4><p>${f.prevent}</p></div></div>
+ <div style="margin-top:10px">${chips(f.refs)}</div>`;
+}
+renderFailure(0);
+
+document.getElementById("metricGrid").innerHTML=METRICS.map(m=>`
+ <div class="metricBox"><h4 style="margin:0">${m.name}</h4><div class="formula">${m.formula}</div><p style="font-size:12px">${m.meaning}</p><div class="caveat"><b>حد القياس:</b> ${m.caveat}</div><div style="margin-top:8px">${chips(m.refs)}</div></div>`).join("");
+
+document.getElementById("gateTable").innerHTML=STAGES.map(s=>`
+ <tr><td><b>${s.num} ${s.name}</b></td><td>${s.controls.slice(0,3).join(" • ")}</td><td>${s.records.slice(0,4).join(" • ")}</td><td>${chips(s.refs)}</td></tr>`).join("");
+
+function renderLens(name){
+ document.querySelectorAll(".lensTabs button").forEach(b=>b.classList.toggle("active",b.dataset.lens===name));
+ document.getElementById("lensList").innerHTML=MATERIALS[name].map(x=>`<div class="lensItem">✓ ${x}</div>`).join("");
+}
+document.querySelectorAll(".lensTabs button").forEach(b=>b.onclick=()=>renderLens(b.dataset.lens)); renderLens("experimental");
+
+const typeSelect=document.getElementById("refType");
+[...new Set(SOURCES.map(s=>s.type))].sort().forEach(t=>{const o=document.createElement("option");o.value=t;o.textContent=t;typeSelect.appendChild(o);});
+function renderRefs(){
+ const q=document.getElementById("refSearch").value.toLowerCase().trim(), t=typeSelect.value;
+ const items=SOURCES.filter(s=>(!t||s.type===t)&&(!q||`${s.id} ${s.title} ${s.org} ${s.what} ${s.version}`.toLowerCase().includes(q)));
+ document.getElementById("refList").innerHTML=items.map(s=>`
+ <div class="refCard"><div class="refTop"><div><span class="refId">${s.id}</span><h4>${s.title}</h4><div class="refMeta">${s.org} • ${s.type} • ${s.version} • ${s.date}</div></div></div>
+ <p>${s.what}</p><a class="refLink" href="${s.url}" target="_blank" rel="noopener">فتح المصدر الأصلي ↗</a></div>`).join("") || `<div class="notice amber">لا توجد نتائج.</div>`;
+}
+document.getElementById("refSearch").addEventListener("input",renderRefs); typeSelect.addEventListener("change",renderRefs); renderRefs();
+
+document.getElementById("navLinks").addEventListener("click",e=>{
+ const b=e.target.closest("button"); if(!b)return;
+ document.querySelectorAll("#navLinks button").forEach(x=>x.classList.remove("active")); b.classList.add("active");
+ document.querySelectorAll(".view").forEach(v=>v.classList.add("hidden")); document.getElementById(b.dataset.view).classList.remove("hidden");
+ document.getElementById("hero").style.display=b.dataset.view==="overview"?"block":"none"; window.scrollTo({top:0,behavior:"smooth"});
+});
+
+
+const stageById=Object.fromEntries(STAGES.map(s=>[s.id,s]));
+document.getElementById("projectMapTable").innerHTML=PROJECT_MAPPING.stage_coverage.map(r=>`
+ <tr>
+   <td><b>${stageById[r.stage_id]?.num || ""} ${stageById[r.stage_id]?.name || r.stage_id}</b></td>
+   <td><span class="tag ${r.status==="partial"||r.status==="local_only"?"synth":"fact"}">${r.status}</span></td>
+   <td>${r.repo_contract.map(x=>`<code>${x}</code>`).join("<br>")}</td>
+   <td>${[...r.tests,...r.evidence_expected].slice(0,6).map(x=>`• ${x}`).join("<br>")}</td>
+   <td>${r.gap}</td>
+ </tr>`).join("");
+
+document.getElementById("projectCaseHeader").innerHTML=`
+ <div class="notice blue"><b>${PROJECT_CASE.record.external_record_id}</b> • ${PROJECT_CASE.record.preferred_name}
+ • band gap ${PROJECT_CASE.record.property.value} ${PROJECT_CASE.record.property.unit}
+ • ${PROJECT_CASE.record.property.calculation_context.method_family}
+ <br><small>${PROJECT_CASE.scientific_status}</small></div>`;
+
+document.getElementById("projectJourneyTable").innerHTML=PROJECT_CASE.journey.map(j=>`
+ <tr><td><b>${stageById[j.stage_id]?.name || j.stage_id}</b></td><td><code>${j.artifact}</code></td><td>${j.proof}</td><td>${j.runtime_verification}</td></tr>`).join("");
+
+document.getElementById("failureInjectionGrid").innerHTML=PROJECT_CASE.failure_injections.map(fi=>`
+ <div class="box red"><h4>${fi.id} · ${fi.name}</h4><p><b>Mutation:</b> ${fi.mutation}</p>
+ <p><b>Expected gate:</b> ${fi.expected_gate}</p><p><b>Minimum test:</b> ${fi.minimum_test}</p></div>`).join("");
+
+const claimSelect=document.getElementById("claimLabel");
+[...new Set(CLAIMS.map(c=>c.label))].sort().forEach(label=>{const o=document.createElement("option");o.value=label;o.textContent=label;claimSelect.appendChild(o);});
+function renderClaims(){
+ const label=claimSelect.value;
+ const items=CLAIMS.filter(c=>!label||c.label===label);
+ document.getElementById("claimList").innerHTML=items.map(c=>`
+  <div class="refCard"><div class="refTop"><div><span class="refId">${c.id}</span>
+  <h4>${c.text}</h4><div class="refMeta">${c.label} • confidence=${c.confidence} • scope=${c.scope}</div></div></div>
+  <div class="notice amber" style="margin:7px 0"><b>حد الادعاء:</b> ${c.caveat}</div>${chips(c.refs)}</div>`).join("");
+}
+claimSelect.addEventListener("change",renderClaims); renderClaims();
+
+
+document.getElementById("exportBtn").onclick=()=>{
+ const payload=window.ATLAS_DATA;
+ const blob=new Blob([JSON.stringify(payload,null,2)],{type:"application/json;charset=utf-8"});
+ const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="scientific-data-lifecycle-atlas-v1.json";a.click();URL.revokeObjectURL(a.href);
+};
+</script>
+</body>
+</html>
