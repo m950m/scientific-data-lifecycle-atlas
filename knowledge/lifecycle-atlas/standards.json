@@ -2,8 +2,8 @@
   {
     "name": "NIST RDaF",
     "version": "2.0 (2024)",
-    "role": "Backbone lifecycle / assessment",
-    "not": "ليس standard إلزاميًا؛ إطار قابل للتخصيص.",
+    "role": "Lifecycle and assessment backbone",
+    "not": "It is not a prescriptive or mandatory standard; it is a customizable framework.",
     "refs": [
       "S1"
     ]
@@ -11,8 +11,8 @@
   {
     "name": "DCC Curation Lifecycle",
     "version": "maintained model",
-    "role": "Curation & preservation across lifecycle",
-    "not": "ليس timeline خطيًا يجب نسخه حرفيًا.",
+    "role": "Curation and preservation across the lifecycle",
+    "not": "It is not a linear timeline to be followed verbatim.",
     "refs": [
       "S2"
     ]
@@ -20,8 +20,8 @@
   {
     "name": "FAIR",
     "version": "2016 principles",
-    "role": "Findability, access, interoperability, reuse",
-    "not": "ليس standard، ليس ضمان جودة، وليس مساويًا لـOpen.",
+    "role": "Findability, accessibility, interoperability, and reuse",
+    "not": "It is not a standard, a quality guarantee, or equivalent to openness.",
     "refs": [
       "S3",
       "S15"
@@ -31,7 +31,7 @@
     "name": "W3C PROV-O",
     "version": "Recommendation 2013",
     "role": "Provenance interchange model",
-    "not": "لا يعطي وحده كل المعنى العلمي الخاص بالمجال.",
+    "not": "By itself, it does not provide all domain-specific scientific semantics.",
     "refs": [
       "S4"
     ]
@@ -40,7 +40,7 @@
     "name": "OAIS",
     "version": "ISO 14721:2025 Ed.3",
     "role": "Long-term archival preservation model",
-    "not": "ليس نموذجًا كاملًا لتصميم التجربة أو التحليل.",
+    "not": "It does not constitute a complete model for experimental design or analysis.",
     "refs": [
       "S5"
     ]
@@ -49,7 +49,7 @@
     "name": "PREMIS",
     "version": "3.0 current",
     "role": "Preservation metadata",
-    "not": "ليس metadata schema علميًا عامًا لكل المجالات.",
+    "not": "It is not a general-purpose scientific metadata schema for every domain.",
     "refs": [
       "S6"
     ]
@@ -57,8 +57,8 @@
   {
     "name": "DataCite Metadata Schema",
     "version": "4.7 (2026-03-03)",
-    "role": "Citation & discovery metadata",
-    "not": "لا يستبدل domain-specific metadata.",
+    "role": "Citation and discovery metadata",
+    "not": "It does not replace domain-specific metadata.",
     "refs": [
       "S7"
     ]
@@ -67,7 +67,7 @@
     "name": "NDSA Levels",
     "version": "2.1 (2026-03-23)",
     "role": "Preservation maturity / practice",
-    "not": "مصفوفة إرشادية وليست شهادة صلاحية علمية للبيانات.",
+    "not": "It is a guidance matrix, not a certification that data are scientifically valid.",
     "refs": [
       "S8"
     ]
@@ -76,7 +76,7 @@
     "name": "CoreTrustSeal",
     "version": "2026–2028",
     "role": "Trustworthy repository requirements",
-    "not": "شهادة المستودع لا تثبت صحة كل dataset داخله.",
+    "not": "Repository certification does not establish the scientific validity of every dataset it contains.",
     "refs": [
       "S9"
     ]
@@ -85,7 +85,7 @@
     "name": "TRUST",
     "version": "2020",
     "role": "Repository trust principles",
-    "not": "مبادئ للمستودعات لا بديل عن FAIR للـdata objects.",
+    "not": "These repository principles do not replace the FAIR principles for data objects.",
     "refs": [
       "S10"
     ]
@@ -93,8 +93,8 @@
   {
     "name": "RO-Crate",
     "version": "1.3 (2026-06-22)",
-    "role": "Package research objects + metadata",
-    "not": "التعبئة لا تضمن preservation أو scientific validity.",
+    "role": "Research-object packaging and metadata",
+    "not": "Packaging does not guarantee long-term preservation or scientific validity.",
     "refs": [
       "S16"
     ]
@@ -102,8 +102,8 @@
   {
     "name": "VIM",
     "version": "JCGM 200:2012",
-    "role": "Metrology terminology & traceability",
-    "not": "metrological traceability لا تضمن وحدها uncertainty مناسبة للغرض.",
+    "role": "Metrology terminology and traceability",
+    "not": "Metrological traceability alone does not guarantee that uncertainty is fit for purpose.",
     "refs": [
       "S12"
     ]

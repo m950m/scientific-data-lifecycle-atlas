@@ -3,8 +3,8 @@
     "name": "Metadata Completeness",
     "formula": "required fields present ÷ required fields expected × 100",
     "stage": "package",
-    "meaning": "هل الحد الأدنى المعرّف محليًا من metadata مكتمل؟",
-    "caveat": "لا يقيس غنى المعنى أو صحة القيم.",
+    "meaning": "Are all locally required metadata fields present?",
+    "caveat": "It does not measure semantic richness or value correctness.",
     "refs": [
       "S7"
     ]
@@ -13,8 +13,8 @@
     "name": "Provenance Coverage",
     "formula": "derived artifacts with traceable inputs + activity ÷ derived artifacts × 100",
     "stage": "package",
-    "meaning": "ما نسبة المخرجات التي يمكن تتبعها؟",
-    "caveat": "اكتمال graph لا يثبت صحة النشاط نفسه.",
+    "meaning": "What proportion of derived outputs can be traced to their inputs and generating activity?",
+    "caveat": "A complete graph does not establish that the activity itself was correct.",
     "refs": [
       "S4"
     ]
@@ -23,8 +23,8 @@
     "name": "Fixity Pass Rate",
     "formula": "objects with current checksum = expected checksum ÷ objects checked × 100",
     "stage": "preserve",
-    "meaning": "هل البتات ما زالت كما نتوقع؟",
-    "caveat": "يثبت integrity على مستوى البتات لا authenticity أو scientific validity.",
+    "meaning": "Do current checksums match the expected checksums?",
+    "caveat": "This measures bit-level integrity, not authenticity or scientific validity.",
     "refs": [
       "S8",
       "S20"
@@ -34,8 +34,8 @@
     "name": "Restore Success",
     "formula": "successful tested restores ÷ restore tests attempted × 100",
     "stage": "preserve",
-    "meaning": "هل النسخ الاحتياطية قابلة للاسترجاع فعلاً؟",
-    "caveat": "الاسترجاع لا يساوي long-term preservation.",
+    "meaning": "Can the backups be restored successfully in practice?",
+    "caveat": "Recoverability is not equivalent to long-term preservation.",
     "refs": [
       "S20"
     ]
@@ -44,8 +44,8 @@
     "name": "Reproducibility Check",
     "formula": "reruns meeting declared tolerance ÷ reruns attempted × 100",
     "stage": "reuse",
-    "meaning": "هل يمكن إعادة الحساب وفق تعريف acceptance محدد؟",
-    "caveat": "يجب إعلان tolerance؛ المقياس ليس universal threshold.",
+    "meaning": "Can the computation be rerun within a declared acceptance tolerance?",
+    "caveat": "The tolerance must be declared; this metric is not a universal threshold.",
     "refs": [
       "S11"
     ]
@@ -54,8 +54,8 @@
     "name": "PID Resolution Rate",
     "formula": "resolving persistent IDs ÷ IDs checked × 100",
     "stage": "share",
-    "meaning": "هل المعرّفات تقود إلى landing pages صالحة؟",
-    "caveat": "resolve ناجح لا يعني أن المحتوى صحيح أو متاح للجميع.",
+    "meaning": "Do the identifiers resolve to valid landing pages?",
+    "caveat": "Successful resolution does not establish content correctness or universal accessibility.",
     "refs": [
       "S3",
       "S7"

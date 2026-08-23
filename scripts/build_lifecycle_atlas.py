@@ -23,7 +23,7 @@ FILES = {
     "project_case":"case_studies/sample_mof_001.json",
 }
 
-ATLAS_VERSION = "1.2"
+ATLAS_VERSION = "1.2.1"
 
 def content_last_updated() -> str:
     """Derive a real 'last updated' timestamp instead of a hardcoded literal.

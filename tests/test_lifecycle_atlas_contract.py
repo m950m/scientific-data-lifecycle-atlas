@@ -1,6 +1,7 @@
 from pathlib import Path
 import importlib.util
 import json
+import re
 import shutil
 import subprocess
 import sys
@@ -223,3 +224,30 @@ def test_independent_deployment_contract_is_pinned_and_publishable():
     assert "restart: unless-stopped" in compose
     assert "actions/upload-pages-artifact@v4" in workflow
     assert "path: docs/lifecycle-atlas" in workflow
+
+def test_repository_text_is_english_only_and_ui_is_ltr():
+    arabic_script = re.compile(r"[\u0600-\u06ff\u0750-\u077f\u08a0-\u08ff]")
+    tracked = subprocess.run(
+        ["git", "ls-files", "-z"],
+        cwd=ROOT,
+        capture_output=True,
+        check=True,
+    ).stdout.split(b"\0")
+    offenders = []
+
+    for raw_path in tracked:
+        if not raw_path:
+            continue
+        path = ROOT / raw_path.decode("utf-8")
+        try:
+            text = path.read_text(encoding="utf-8")
+        except UnicodeDecodeError:
+            continue
+        for line_number, line in enumerate(text.splitlines(), start=1):
+            if arabic_script.search(line):
+                offenders.append(f"{path.relative_to(ROOT)}:{line_number}")
+
+    assert offenders == [], "Arabic script remains in: " + ", ".join(offenders)
+
+    html = (ROOT / "docs/lifecycle-atlas/index.html").read_text(encoding="utf-8")
+    assert '<html lang="en" dir="ltr">' in html

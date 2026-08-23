@@ -1,11 +1,11 @@
 [
   {
     "id": "calibration",
-    "name": "جهاز غير معاير / drift",
+    "name": "Uncalibrated instrument / drift",
     "root": "generate",
-    "severity": "حرج",
+    "severity": "Critical",
     "kind": "Measurement / systematic error",
-    "desc": "القيم قد تكون متماسكة داخليًا لكنها منحازة بسبب حالة القياس.",
+    "desc": "Values may be internally consistent yet systematically biased because of the condition of the measurement system.",
     "prop": [
       "generate",
       "ingest",
@@ -16,19 +16,19 @@
       "share",
       "reuse"
     ],
-    "detect": "control materials، calibration history، cross-instrument comparison، uncertainty review.",
-    "prevent": "calibration + metrological traceability حيث تنطبق؛ لا يكفي وجود instrument ID.",
+    "detect": "Control materials, calibration history, cross-instrument comparison, and uncertainty review.",
+    "prevent": "Calibration and metrological traceability where applicable; an instrument ID alone is insufficient.",
     "refs": [
       "S12"
     ]
   },
   {
     "id": "identity",
-    "name": "خلط هوية العينة أو المصدر",
+    "name": "Sample or source identity mix-up",
     "root": "generate",
-    "severity": "حرج",
+    "severity": "Critical",
     "kind": "Identity / chain-of-custody",
-    "desc": "معلومة صحيحة تُنسب إلى كيان خاطئ؛ كل المشتقات قد تصبح غير قابلة للدفاع.",
+    "desc": "Correct information is assigned to the wrong entity, potentially making all derived outputs indefensible.",
     "prop": [
       "generate",
       "ingest",
@@ -39,8 +39,8 @@
       "share",
       "reuse"
     ],
-    "detect": "sample/run reconciliation، barcode/ID checks، custody log.",
-    "prevent": "persistent internal IDs + custody events + no manual renaming as identity mechanism.",
+    "detect": "Sample/run reconciliation, barcode and identifier checks, and custody logs.",
+    "prevent": "Use persistent internal identifiers and recorded custody events; do not rely on manual renaming as the identity mechanism.",
     "refs": [
       "S1",
       "S4"
@@ -48,11 +48,11 @@
   },
   {
     "id": "coercion",
-    "name": "تحويل صامت أثناء التنظيف",
+    "name": "Silent coercion during cleaning",
     "root": "process",
-    "severity": "مرتفع",
+    "severity": "High",
     "kind": "Transformation / semantic loss",
-    "desc": "برنامج أو spreadsheet يغيّر القيم تلقائيًا دون فشل صريح.",
+    "desc": "Software or a spreadsheet changes values automatically without an explicit failure.",
     "prop": [
       "process",
       "analyze",
@@ -61,27 +61,27 @@
       "share",
       "reuse"
     ],
-    "detect": "schema/domain constraints، diffs، round-trip checks، anomaly rules.",
-    "prevent": "scripted/versioned transforms، explicit types، raw preservation.",
+    "detect": "Schema and domain constraints, diffs, round-trip checks, and anomaly rules.",
+    "prevent": "Scripted, versioned transformations, explicit types, and preservation of raw data.",
     "refs": [
       "S18"
     ]
   },
   {
     "id": "provenance",
-    "name": "انقطاع الـProvenance",
+    "name": "Broken provenance chain",
     "root": "package",
-    "severity": "مرتفع",
+    "severity": "High",
     "kind": "Traceability / provenance",
-    "desc": "توجد نتيجة لكن لا يمكن إثبات أي inputs/activities/agents/versions أنتجتها.",
+    "desc": "A result exists, but the inputs, activities, agents, and versions that produced it cannot be established.",
     "prop": [
       "package",
       "preserve",
       "share",
       "reuse"
     ],
-    "detect": "graph completeness / orphan derived artifacts.",
-    "prevent": "capture provenance أثناء العمل، لا كإعادة بناء يدوية بعد النشر.",
+    "detect": "Provenance-graph completeness checks and detection of orphaned derived artifacts.",
+    "prevent": "Capture provenance during the work rather than reconstructing it manually after publication.",
     "refs": [
       "S4",
       "S1"
@@ -89,19 +89,19 @@
   },
   {
     "id": "environment",
-    "name": "غياب البيئة البرمجية",
+    "name": "Missing software environment",
     "root": "analyze",
-    "severity": "مرتفع",
+    "severity": "High",
     "kind": "Computational reproducibility",
-    "desc": "نفس البيانات والكود قد لا تعيد النتيجة بسبب dependencies أو runtime مختلف.",
+    "desc": "The same data and code may fail to reproduce the result when dependencies or runtimes differ.",
     "prop": [
       "analyze",
       "package",
       "share",
       "reuse"
     ],
-    "detect": "clean-room rerun / CI reproduction check.",
-    "prevent": "environment manifest, lockfile/container where appropriate, versioned code.",
+    "detect": "Clean-room reruns and CI-based reproduction checks.",
+    "prevent": "Environment manifests, lockfiles or containers where appropriate, and versioned code.",
     "refs": [
       "S11",
       "S16"
@@ -109,18 +109,18 @@
   },
   {
     "id": "fixity",
-    "name": "فساد ملف بلا كشف",
+    "name": "Undetected file corruption",
     "root": "preserve",
-    "severity": "مرتفع",
+    "severity": "High",
     "kind": "Integrity / preservation",
-    "desc": "تتغير البتات أو تضيع نسخة ولا يوجد baseline أو audit للكشف.",
+    "desc": "Bits may change, or a copy may be lost, without a baseline or audit capable of detecting the problem.",
     "prop": [
       "preserve",
       "share",
       "reuse"
     ],
-    "detect": "scheduled checksum/fixity audit.",
-    "prevent": "multiple copies + fixity + monitored storage + restore tests.",
+    "detect": "Scheduled checksum and fixity audits.",
+    "prevent": "Multiple copies, fixity checks, monitored storage, and restore tests.",
     "refs": [
       "S8",
       "S20",
@@ -129,17 +129,17 @@
   },
   {
     "id": "license",
-    "name": "ترخيص أو شروط وصول غامضة",
+    "name": "Ambiguous license or access conditions",
     "root": "share",
-    "severity": "متوسط",
+    "severity": "Medium",
     "kind": "Legal / access",
-    "desc": "قد تكون البيانات موجودة ويمكن اكتشافها لكن إعادة الاستخدام غير واضحة أو غير مسموحة.",
+    "desc": "Data may exist and be discoverable while reuse remains unclear or impermissible.",
     "prop": [
       "share",
       "reuse"
     ],
-    "detect": "metadata audit: license/accessRights/conditions.",
-    "prevent": "explicit machine/human-readable rights and access process.",
+    "detect": "Metadata audits of license, access-rights, and conditions fields.",
+    "prevent": "Explicit machine- and human-readable rights statements and a documented access process.",
     "refs": [
       "S3",
       "S14",
@@ -148,17 +148,17 @@
   },
   {
     "id": "reference",
-    "name": "Reference rot / رابط غير مستدام",
+    "name": "Reference rot / unstable link",
     "root": "share",
-    "severity": "متوسط",
+    "severity": "Medium",
     "kind": "Discovery / scholarly context",
-    "desc": "تختفي الصفحة أو يتغير محتواها فتضعف القدرة على إعادة زيارة السياق العلمي.",
+    "desc": "A page disappears or its content changes, weakening the ability to revisit the scientific context.",
     "prop": [
       "share",
       "reuse"
     ],
-    "detect": "link checking + PID resolution monitoring + archival snapshots where relevant.",
-    "prevent": "persistent identifiers, stable landing pages, repository deposit.",
+    "detect": "Link checks, PID-resolution monitoring, and archival snapshots where relevant.",
+    "prevent": "Persistent identifiers, stable landing pages, and repository deposit.",
     "refs": [
       "S19",
       "S7"

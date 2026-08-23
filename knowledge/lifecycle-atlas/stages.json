@@ -2,58 +2,58 @@
   {
     "id": "envision",
     "num": "01",
-    "name": "التصور والحوكمة",
+    "name": "Envision & Governance",
     "en": "Envision & Governance",
     "icon": "🧭",
     "risk": 62,
-    "purpose": "تعريف لماذا توجد البيانات، من يملك القرارات، وما الاستخدامات والقيود التي يجب أن يصمم النظام لخدمتها.",
+    "purpose": "Define why the data exists, who owns decision-making, and which uses and constraints the system must be designed to support.",
     "inputs": [
-      "هدف البحث أو البرنامج",
-      "سياق مؤسسي/قانوني/أخلاقي",
-      "مجتمع المستخدمين المتوقع (Designated/Target Community)"
+      "Research or program objective",
+      "Institutional/legal/ethical context",
+      "Expected user community (Designated/Target Community)"
     ],
     "operations": [
-      "تعريف الأدوار والمسؤوليات",
-      "سياسة الملكية والوصول والاحتفاظ",
-      "تقدير التكلفة والاستدامة",
-      "تحديد نية FAIR وحدود الانفتاح"
+      "Define roles and responsibilities",
+      "Ownership, access, and retention policy",
+      "Cost and sustainability assessment",
+      "Define FAIR intent and the limits of openness"
     ],
     "outputs": [
-      "سياسة حوكمة",
-      "خريطة مسؤوليات",
-      "متطلبات وصول/احتفاظ",
-      "مبادئ قبول الجودة"
+      "Governance policy",
+      "Responsibility map",
+      "Access/retention requirements",
+      "Quality acceptance principles"
     ],
     "failures": [
       {
-        "t": "غرض غير محدد",
-        "d": "يصبح من المستحيل الحكم هل البيانات «جيدة» لأن الجودة مرتبطة بالاستخدام المقصود."
+        "t": "Undefined purpose",
+        "d": "It becomes impossible to judge whether the data is good because quality depends on the intended use."
       },
       {
-        "t": "مسؤوليات مبهمة",
-        "d": "فجوات في الملكية، النسخ، الموافقات، والقرار عند الحوادث."
+        "t": "Ambiguous responsibilities",
+        "d": "Gaps arise in ownership, backups, approvals, and incident decision-making."
       },
       {
-        "t": "خلط FAIR مع Open",
-        "d": "قد يؤدي إما إلى مشاركة غير مناسبة أو إغلاق غير مبرر."
+        "t": "Conflating FAIR with Open",
+        "d": "May lead either to inappropriate sharing or unjustified restriction."
       }
     ],
     "signals": [
-      "لا يوجد owner واضح",
-      "لا توجد سياسة retention/access",
-      "معايير الجودة عامة وغير مرتبطة بالاستخدام"
+      "No clear owner",
+      "No retention/access policy",
+      "Quality criteria are generic and disconnected from the intended use"
     ],
     "controls": [
-      "RACI/ownership واضح",
-      "سياسة governance versioned",
-      "تعريف fit-for-purpose",
-      "تسجيل القيود القانونية/الأخلاقية"
+      "Clear RACI/ownership",
+      "Versioned governance policy",
+      "Fit-for-purpose definition",
+      "Record legal/ethical constraints"
     ],
     "records": [
-      "قرار الحوكمة",
-      "نسخة السياسة",
-      "سجل المخاطر",
-      "مبررات الاحتفاظ/الإتاحة"
+      "Governance decision",
+      "Policy version",
+      "Risk register",
+      "Retention/access rationale"
     ],
     "refs": [
       "S1",
@@ -64,62 +64,62 @@
   {
     "id": "plan",
     "num": "02",
-    "name": "تصميم الدراسة والتخطيط",
+    "name": "Study Design & Data Management Planning",
     "en": "Study Design & Data Management Planning",
     "icon": "🧩",
     "risk": 78,
-    "purpose": "تحويل سؤال البحث إلى بروتوكول قابل للتنفيذ وإلى خطة بيانات تعرف مسبقًا ماذا سيُجمع وكيف سيُعرّف ويُخزن ويُشارك.",
+    "purpose": "Translate the research question into an executable protocol and a data plan that defines in advance what will be collected and how it will be described, stored, and shared.",
     "inputs": [
-      "سؤال/فرضية",
-      "تصميم تجريبي أو حسابي",
-      "متغيرات ومخرجات",
-      "متطلبات المؤسسة/الممول"
+      "Research question/hypothesis",
+      "Experimental or computational design",
+      "Variables and outputs",
+      "Institutional/funder requirements"
     ],
     "operations": [
-      "تعريف population/sample أو system",
-      "اختيار صيغ وschema",
-      "خطة تسمية وإصدارات",
-      "تخطيط metadata/provenance",
-      "خطة تخزين/نسخ/مشاركة"
+      "Define population/sample or system",
+      "Select formats and schema",
+      "Naming and versioning plan",
+      "Metadata/provenance planning",
+      "Storage/backup/sharing plan"
     ],
     "outputs": [
       "Protocol",
       "DMP/DMS Plan",
-      "Data dictionary أولي",
+      "Initial data dictionary",
       "Naming/versioning convention",
       "Quality plan"
     ],
     "failures": [
       {
-        "t": "تعريف متغيرات بعد بدء الجمع",
-        "d": "يزيد خطر التناقض والتحيز وإعادة التفسير الرجعي."
+        "t": "Defining variables after collection begins",
+        "d": "Increases the risk of inconsistency, bias, and retrospective reinterpretation."
       },
       {
-        "t": "غياب استراتيجية هوية",
-        "d": "تنفصل العينة/الحساب/الملف عن أصلها."
+        "t": "Missing identity strategy",
+        "d": "The sample/calculation/file becomes disconnected from its origin."
       },
       {
-        "t": "تأجيل preservation إلى النهاية",
-        "d": "قد تضيع معلومات لا يمكن استرجاعها لاحقًا."
+        "t": "Deferring preservation until the end",
+        "d": "Information that cannot be recovered later may be lost."
       }
     ],
     "signals": [
-      "حقول أساسية غير معرّفة",
-      "لا يوجد data dictionary",
-      "لا توجد خطة ربط sample ↔ measurement ↔ file"
+      "Required fields are undefined",
+      "No data dictionary",
+      "No plan to link sample ↔ measurement ↔ file"
     ],
     "controls": [
-      "Protocol versioned",
-      "DMP كوثيقة حية",
-      "معرفات ثابتة منذ البداية",
-      "mandatory metadata قبل التنفيذ"
+      "Versioned protocol",
+      "DMP as a living document",
+      "Persistent identifiers from the outset",
+      "Mandatory metadata before execution"
     ],
     "records": [
-      "بروتوكول مع رقم نسخة",
+      "Versioned protocol",
       "DMP",
       "data dictionary",
-      "قرارات schema/format",
-      "خطة QA"
+      "Schema/format decisions",
+      "QA plan"
     ],
     "refs": [
       "S1",
@@ -130,24 +130,24 @@
   {
     "id": "generate",
     "num": "03",
-    "name": "التوليد أو الاقتناء",
+    "name": "Generate / Acquire",
     "en": "Generate / Acquire",
     "icon": "🧪",
     "risk": 94,
-    "purpose": "إنتاج أو استلام الملاحظة العلمية مع الحفاظ على الهوية، السياق، شروط القياس، وعدم اليقين وسلسلة التتبع.",
+    "purpose": "Produce or receive the scientific observation while preserving identity, context, measurement conditions, uncertainty, and the chain of traceability.",
     "inputs": [
-      "عينة/نظام أو مصدر خارجي",
+      "Sample/system or external source",
       "instrument / software",
       "protocol",
-      "حالة المعايرة",
-      "هوية العينة/المصدر"
+      "Calibration status",
+      "Sample/source identity"
     ],
     "operations": [
-      "قياس/محاكاة/جمع",
+      "Measurement/simulation/acquisition",
       "sampling",
-      "تسجيل timestamps",
-      "ربط instrument/software version",
-      "capture للسياق التجريبي"
+      "Record timestamps",
+      "Link instrument/software version",
+      "Capture experimental context"
     ],
     "outputs": [
       "Raw observations/files",
@@ -157,31 +157,31 @@
     ],
     "failures": [
       {
-        "t": "خطأ قياس منهجي",
-        "d": "قد ينتج ملف كامل وصحيح بنيويًا لكنه متحيز علميًا."
+        "t": "Systematic measurement error",
+        "d": "May produce a complete, structurally valid file that is nevertheless scientifically biased."
       },
       {
-        "t": "خلط هوية العينة",
-        "d": "تُنسب نتيجة صحيحة إلى كيان خاطئ؛ أخطر من missing value."
+        "t": "Sample identity mix-up",
+        "d": "A correct result is attributed to the wrong entity; this is more serious than a missing value."
       },
       {
-        "t": "غياب المعايرة/التتبعية",
-        "d": "يصعب ربط القياس بمرجع أو تقدير أثر الجهاز على النتيجة."
+        "t": "Missing calibration/traceability",
+        "d": "It becomes difficult to link the measurement to a reference or estimate the instrument's effect on the result."
       }
     ],
     "signals": [
-      "control sample خارج النطاق",
-      "timestamp أو instrument ID مفقود",
-      "تناقض بين sample log والملفات"
+      "Control sample outside its expected range",
+      "Missing timestamp or instrument ID",
+      "Mismatch between the sample log and files"
     ],
     "controls": [
-      "metrological traceability حيث تنطبق",
+      "Metrological traceability where applicable",
       "calibration records",
       "unique sample/run IDs",
-      "raw capture غير قابل للكتابة فوقه"
+      "Overwrite-protected raw capture"
     ],
     "records": [
-      "raw file الأصلي",
+      "Original raw file",
       "instrument ID/config",
       "calibration certificate/log",
       "sample lineage",
@@ -195,11 +195,11 @@
   {
     "id": "ingest",
     "num": "04",
-    "name": "النقل والإدخال وحماية الخام",
+    "name": "Transfer, Ingest & Raw Protection",
     "en": "Transfer, Ingest & Raw Protection",
     "icon": "📥",
     "risk": 83,
-    "purpose": "نقل البيانات من مصدر التوليد إلى بيئة الإدارة دون فقد بتات أو هوية أو علاقة الملفات ببعضها.",
+    "purpose": "Transfer data from its generation source into the managed environment without losing bits, identity, or relationships among files.",
     "inputs": [
       "raw files",
       "source manifest",
@@ -211,7 +211,7 @@
       "checksum/fixity capture",
       "manifest creation",
       "schema/format sanity checks",
-      "quarantine عند الفشل"
+      "quarantine on failure"
     ],
     "outputs": [
       "ingested raw zone",
@@ -221,27 +221,27 @@
     ],
     "failures": [
       {
-        "t": "نقل ناقص أو corrupted",
-        "d": "فقد أو تغير بتات قد لا يظهر فورًا في التحليل."
+        "t": "Incomplete or corrupted transfer",
+        "d": "Bit loss or alteration may not be immediately apparent during analysis."
       },
       {
-        "t": "فقد أسماء/هيكل الملفات",
-        "d": "تنكسر العلاقة بين مكونات experiment/run."
+        "t": "Loss of file names/structure",
+        "d": "Relationships among experiment/run components are broken."
       },
       {
-        "t": "الكتابة فوق raw",
-        "d": "تفقد القدرة على الرجوع إلى الأصل أو تدقيق التحولات."
+        "t": "Overwriting raw data",
+        "d": "Eliminates the ability to return to the source or audit transformations."
       }
     ],
     "signals": [
       "checksum mismatch",
-      "byte/file counts مختلفة",
+      "Byte/file count mismatch",
       "orphan files",
-      "تاريخ تعديل raw بعد ingest"
+      "Raw data modified after ingest"
     ],
     "controls": [
       "checksum before/after",
-      "immutable/WORM-like raw policy حيث يلزم",
+      "Immutable/WORM-like raw policy where required",
       "manifest + audit log",
       "separate raw and derived zones"
     ],
@@ -261,11 +261,11 @@
   {
     "id": "process",
     "num": "05",
-    "name": "المعالجة وQA/QC والتحويل",
+    "name": "Process, QA/QC & Transform",
     "en": "Process, QA/QC & Transform",
     "icon": "⚙️",
     "risk": 92,
-    "purpose": "تحويل الخام إلى بيانات منسقة أو مشتقة مع جعل كل تغيير ظاهرًا، قابلاً للتدقيق، واختباره ضد قيود المعنى.",
+    "purpose": "Transform raw data into curated or derived data while making every change visible, auditable, and tested against semantic constraints.",
     "inputs": [
       "raw/ingested data",
       "schema",
@@ -291,25 +291,25 @@
     "failures": [
       {
         "t": "Silent semantic coercion",
-        "d": "مثل تحويل gene symbols تلقائيًا؛ الملف يبدو صالحًا لكن المعنى تغيّر."
+        "d": "For example, gene symbols may be converted automatically; the file appears valid, but its meaning has changed."
       },
       {
-        "t": "Join أو key خاطئ",
-        "d": "تُركب علاقات غير حقيقية ويمكن أن تنتشر إلى كل النتائج."
+        "t": "Incorrect join or key",
+        "d": "Spurious relationships are created and may propagate into all results."
       },
       {
-        "t": "تنظيف مدمر",
-        "d": "حذف outliers أو قيم غير عادية دون قاعدة موثقة قد يغير الاستنتاج."
+        "t": "Destructive cleaning",
+        "d": "Removing outliers or unusual values without a documented rule may change the conclusion."
       }
     ],
     "signals": [
-      "row-count drift غير مبرر",
+      "Unexplained row-count drift",
       "unit/domain violations",
-      "distribution shift بعد التحويل",
-      "diff غير متوقع بين الإصدارات"
+      "Distribution shift after transformation",
+      "Unexpected diff between versions"
     ],
     "controls": [
-      "versioned scripts لا manual edits كمسار أساسي",
+      "Versioned scripts rather than manual edits as the primary path",
       "schema + unit validation",
       "invariants/reconciliation tests",
       "reversible transformations"
@@ -330,11 +330,11 @@
   {
     "id": "analyze",
     "num": "06",
-    "name": "التحليل والحوسبة والتفسير",
+    "name": "Analyze, Compute & Interpret",
     "en": "Analyze, Compute & Interpret",
     "icon": "📊",
     "risk": 91,
-    "purpose": "تحويل البيانات المنسقة إلى نتائج واستنتاجات مع تثبيت الكود والبيئة والإعدادات وتعريف معيار النجاح لإعادة التشغيل.",
+    "purpose": "Transform curated data into results and conclusions while pinning the code, environment, and settings and defining the success criterion for reruns.",
     "inputs": [
       "curated data",
       "analysis code",
@@ -359,30 +359,30 @@
     ],
     "failures": [
       {
-        "t": "بيئة برمجية غير مثبتة",
-        "d": "قد يتعذر الحصول على النتائج نفسها لاحقًا حتى مع نفس البيانات والكود."
+        "t": "Unpinned software environment",
+        "d": "Reproducing the same results later may be impossible even with the same data and code."
       },
       {
         "t": "Data leakage / misuse",
-        "d": "تنتج مقاييس متفائلة أو استنتاجات لا تصمد خارج الإعداد الأصلي."
+        "d": "Produces overly optimistic metrics or conclusions that do not hold beyond the original setting."
       },
       {
-        "t": "تفسير يتجاوز التصميم",
-        "d": "صحة الحساب لا تعني صحة الاستنتاج السببي أو التعميم."
+        "t": "Interpretation beyond the design",
+        "d": "Computational correctness does not imply valid causal inference or generalization."
       }
     ],
     "signals": [
       "rerun mismatch",
       "dependency drift",
       "train/test contamination",
-      "نتائج شديدة الحساسية لإعداد واحد"
+      "Results highly sensitive to a single setting"
     ],
     "controls": [
       "lockfile/container where useful",
       "versioned code + parameters",
       "random seeds where relevant",
       "sensitivity/robustness checks",
-      "acceptance tolerance محددة"
+      "Defined acceptance tolerance"
     ],
     "records": [
       "code revision",
@@ -401,11 +401,11 @@
   {
     "id": "package",
     "num": "07",
-    "name": "التوصيف والتعبئة وربط الأدلة",
+    "name": "Describe, Package & Link Evidence",
     "en": "Describe, Package & Link Evidence",
     "icon": "🧬",
     "risk": 86,
-    "purpose": "تجميع البيانات والنتائج مع metadata وprovenance والهوية والإصدارات والحقوق بحيث يصبح الناتج Research Object قابلًا للفهم آليًا وبشريًا.",
+    "purpose": "Package data and results with metadata, provenance, identity, versions, and rights so that the resulting Research Object is machine- and human-understandable.",
     "inputs": [
       "data + code + outputs",
       "metadata",
@@ -428,29 +428,29 @@
     ],
     "failures": [
       {
-        "t": "Metadata بلا معنى مجالي",
-        "d": "قد تكون هناك حقول كثيرة لكن لا تكفي لفهم الاستخدام العلمي."
+        "t": "Metadata without domain meaning",
+        "d": "Many fields may be present yet still be insufficient to understand the scientific use."
       },
       {
         "t": "Provenance gap",
-        "d": "لا يمكن ربط نتيجة مشتقة بمدخلها أو النشاط الذي أنشأها."
+        "d": "A derived result cannot be linked to its input or to the activity that created it."
       },
       {
         "t": "Version ambiguity",
-        "d": "يُقتبس dataset أو code دون معرفة أي نسخة أنتجت النتيجة."
+        "d": "A dataset or codebase is cited without identifying which version produced the result."
       }
     ],
     "signals": [
-      "derived artifact بلا parent",
-      "حقول required ناقصة",
-      "version غير مذكور",
-      "لا توجد علاقة paper↔data↔code"
+      "Derived artifact without a parent",
+      "Missing required fields",
+      "Version not specified",
+      "No paper↔data↔code relationship"
     ],
     "controls": [
       "DataCite + domain metadata",
       "W3C PROV mapping",
       "explicit version relations",
-      "RO-Crate أو package مماثل حيث يناسب"
+      "RO-Crate or a comparable package where appropriate"
     ],
     "records": [
       "metadata document",
@@ -469,11 +469,11 @@
   {
     "id": "preserve",
     "num": "08",
-    "name": "التخزين والنسخ والحفظ طويل الأجل",
+    "name": "Store, Backup & Preserve",
     "en": "Store, Backup & Preserve",
     "icon": "🗄️",
     "risk": 88,
-    "purpose": "الحفاظ على البتات والمعنى وقابلية الوصول عبر الزمن، لا مجرد وجود نسخة على وسيط تخزين.",
+    "purpose": "Preserve the bits, meaning, and accessibility over time, rather than merely keeping a copy on storage media.",
     "inputs": [
       "research package",
       "retention decision",
@@ -497,26 +497,26 @@
     ],
     "failures": [
       {
-        "t": "اعتبار backup = preservation",
-        "d": "النسخة الاحتياطية وحدها لا تضمن بقاء المعنى أو قابلية القراءة أو سلامة طويلة الأجل."
+        "t": "Treating backup as preservation",
+        "d": "A backup alone does not ensure that meaning, readability, or long-term integrity will persist."
       },
       {
         "t": "Bit rot / corruption",
-        "d": "تغير غير مرغوب قد يبقى صامتًا دون fixity checks."
+        "d": "An unwanted change may remain undetected without fixity checks."
       },
       {
         "t": "Format/software obsolescence",
-        "d": "قد تبقى البتات سليمة لكن لا يمكن تفسيرها أو تشغيلها."
+        "d": "The bits may remain intact but become impossible to interpret or process."
       }
     ],
     "signals": [
       "checksum mismatch",
-      "restore test يفشل",
+      "Restore test fails",
       "format unsupported",
-      "نسخة واحدة في fault domain واحد"
+      "Single copy in one fault domain"
     ],
     "controls": [
-      "geographic/technical redundancy حسب المخاطر",
+      "Geographic/technical redundancy based on risk",
       "scheduled fixity",
       "tested restore",
       "representation information",
@@ -539,11 +539,11 @@
   {
     "id": "share",
     "num": "09",
-    "name": "النشر والمشاركة والاكتشاف والوصول",
+    "name": "Publish, Share, Discover & Access",
     "en": "Publish, Share, Discover & Access",
     "icon": "🌐",
     "risk": 81,
-    "purpose": "إتاحة كائن بحثي محدد النسخة وقابل للاكتشاف والاستشهاد، مع شروط وصول وترخيص واضحة وفي مستودع مناسب.",
+    "purpose": "Make a versioned, discoverable, and citable research object available with clear access and licensing terms in an appropriate repository.",
     "inputs": [
       "publishable package",
       "metadata",
@@ -566,22 +566,22 @@
     ],
     "failures": [
       {
-        "t": "رابط بلا PID/landing page",
-        "d": "link rot أو content drift يضعف إمكانية التحقق اللاحق."
+        "t": "Link without a PID/landing page",
+        "d": "Link rot or content drift weakens subsequent verification."
       },
       {
-        "t": "License/access غامض",
-        "d": "قد تكون البيانات قابلة للتحميل لكنها غير قابلة لإعادة الاستخدام قانونيًا."
+        "t": "Ambiguous license/access",
+        "d": "The data may be downloadable but not legally reusable."
       },
       {
-        "t": "مستودع غير مناسب",
-        "d": "قد لا يضمن الاستدامة، provenance، retention أو metadata المطلوبة للمجال."
+        "t": "Unsuitable repository",
+        "d": "It may not ensure the sustainability, provenance, retention, or metadata required by the domain."
       }
     ],
     "signals": [
-      "PID لا resolve",
-      "landing page بلا version/license",
-      "المستودع لا يوضح retention/provenance"
+      "PID does not resolve",
+      "Landing page without version/license",
+      "Repository does not state retention/provenance"
     ],
     "controls": [
       "trusted/established repository",
@@ -608,11 +608,11 @@
   {
     "id": "reuse",
     "num": "10",
-    "name": "إعادة الاستخدام وإعادة الإنتاج والتكرار",
+    "name": "Reuse, Reproduce & Replicate",
     "en": "Reuse, Reproduce & Replicate",
     "icon": "♻️",
     "risk": 90,
-    "purpose": "اختبار ما إذا كان شخص آخر أو فريق لاحق يستطيع فهم البيانات وتقييم ملاءمتها وإعادة تشغيل الحساب أو جمع بيانات جديدة للتحقق المستقل.",
+    "purpose": "Test whether another person or a later team can understand the data, assess its fitness, rerun the computation, or collect new data for independent verification.",
     "inputs": [
       "published research object",
       "documentation",
@@ -627,29 +627,29 @@
       "new-data replication where relevant"
     ],
     "outputs": [
-      "reproduced result أو discrepancy",
+      "reproduced result or discrepancy",
       "new analysis",
       "replication evidence",
       "reuse citation/derivative"
     ],
     "failures": [
       {
-        "t": "السياق موجود في رأس الباحث فقط",
-        "d": "الملفات تصل لكن لا يمكن تفسيرها بثقة."
+        "t": "Context exists only in the researcher's head",
+        "d": "The files arrive but cannot be interpreted with confidence."
       },
       {
         "t": "Dependency / environment drift",
-        "d": "إعادة التشغيل تفشل لأسباب تشغيلية لا علمية."
+        "d": "The rerun fails for operational rather than scientific reasons."
       },
       {
-        "t": "Reuse خارج نطاق صلاحية البيانات",
-        "d": "FAIRness لا تعني أن البيانات مناسبة لكل سؤال جديد."
+        "t": "Reuse outside the data's valid scope",
+        "d": "FAIRness does not mean the data is suitable for every new question."
       }
     ],
     "signals": [
-      "طلب توضيحات أساسية من المؤلف",
-      "لا يمكن تحديد dataset/code version",
-      "نتيجة rerun خارج tolerance"
+      "Request for essential clarification from the author",
+      "Unable to identify dataset/code version",
+      "Rerun result outside tolerance"
     ],
     "controls": [
       "documented scope/limitations",

@@ -185,7 +185,7 @@ def main():
     # must conform to schema/atlas_bundle.schema.json. This was previously
     # unused dead weight; now it is load-bearing.
     bundle = {
-        "atlas_version": "1.2",
+        "atlas_version": "1.2.1",
         "updated": "1970-01-01T00:00:00+00:00",  # placeholder; build script fills the real value
         "methodology": methodology,
         "stages": stages,

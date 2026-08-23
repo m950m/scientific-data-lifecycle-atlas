@@ -2,9 +2,9 @@
   {
     "title": "Excel gene-name coercion",
     "stat": "19.6%",
-    "scope": "selected genomics journals; papers with supplementary Excel gene lists",
-    "lesson": "التحويل الصامت يمكن أن يفسد semantics دون أن ينتج file error.",
-    "caution": "ليس معدل خطأ لكل spreadsheets أو لكل العلوم؛ هو قياس لسياق محدد.",
+    "scope": "Selected genomics journals; papers with supplementary Excel gene lists",
+    "lesson": "Silent coercion can corrupt semantics without producing a file error.",
+    "caution": "This is not an error rate for all spreadsheets or all scientific fields; the statistic comes from a specific study context.",
     "refs": [
       "S18"
     ]
@@ -12,9 +12,9 @@
   {
     "title": "Research-data attrition with age",
     "stat": "17%/year",
-    "scope": "odds that a dataset was reported extant in 516 studies aged 2–22 years",
-    "lesson": "الاعتماد على حاسوب/ذاكرة الباحث للحفظ طويل الأجل هش.",
-    "caution": "النتيجة تخص عينة الدراسة ولا تُعامل كقانون سنوي لكل المجالات.",
+    "scope": "Odds that a dataset was reported as extant across 516 studies aged 2–22 years",
+    "lesson": "Relying on a researcher's computer or memory for long-term preservation is fragile.",
+    "caution": "The result applies to the study sample and must not be generalized into a universal annual attrition rate across domains.",
     "refs": [
       "S17"
     ]
@@ -23,8 +23,8 @@
     "title": "Reference rot",
     "stat": "1 in 5",
     "scope": "STM articles across large corpora; seven in ten among articles containing web references",
-    "lesson": "URL وحده ليس استراتيجية استدامة للسياق العلمي.",
-    "caution": "المقياس عن web references وليس عن DOI-resolved repository objects تحديدًا.",
+    "lesson": "A URL alone is not a sustainability strategy for scientific context.",
+    "caution": "The statistic concerns web references, not specifically repository objects resolved through DOIs.",
     "refs": [
       "S19"
     ]

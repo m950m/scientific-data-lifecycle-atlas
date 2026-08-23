@@ -1,9 +1,10 @@
 # Scientific Data Lifecycle Atlas
 
-This repository contains Lifecycle Atlas v1.2 as a standalone, data-driven
+This repository contains Lifecycle Atlas v1.2.1 as a standalone, data-driven
 documentation project. The canonical lifecycle model lives under
 `knowledge/lifecycle-atlas/`; the static site under `docs/lifecycle-atlas/`
-is generated from that model.
+is generated from that model. All authoritative knowledge content and the
+public interface are maintained in English.
 
 The repository does not contain the MOF Scientific Data Platform runtime.
 Consequently, its project mapping remains specification-oriented until real
@@ -51,9 +52,11 @@ remove it later, run:
 
 ## Publish as an independent reference
 
-After pushing this repository to GitHub, select **Settings → Pages → Build and
-deployment → Source → GitHub Actions**. A successful push to `main` validates
-the knowledge contract and publishes `docs/lifecycle-atlas/` as the site.
+The canonical source is the
+[GitHub repository](https://github.com/m950m/scientific-data-lifecycle-atlas),
+and the public [interactive Atlas](https://m950m.github.io/scientific-data-lifecycle-atlas/)
+is published from `docs/lifecycle-atlas/` after a successful validation run on
+`main`.
 
 Use the hosted URL for reading, and pin the source tag plus full commit SHA when
 the larger platform cites the Atlas. See [REFERENCE.md](REFERENCE.md) for a

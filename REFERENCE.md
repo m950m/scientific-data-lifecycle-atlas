@@ -6,8 +6,9 @@ and the full commit SHA; the live site URL is only the interactive view.
 
 ## Reference record for a consuming repository
 
-After this repository has been pushed and tagged, add a file such as
-`docs/references/lifecycle-atlas.md` to the consuming project:
+The current English-only release is `v1.2.1`. Add a file such as
+`docs/references/lifecycle-atlas.md` to the consuming project and replace the
+commit placeholder with the SHA resolved from the release tag:
 
 ```markdown
 # Scientific Data Lifecycle Atlas reference
@@ -17,10 +18,10 @@ Scientific Data Lifecycle Atlas.
 
 ## Pinned reference
 
-- Version/tag: `v1.2.0`
+- Version/tag: `v1.2.1`
 - Commit: `<FULL_RELEASE_SHA>`
-- Source: `https://github.com/<OWNER>/scientific-data-lifecycle-atlas/commit/<FULL_RELEASE_SHA>`
-- Interactive view: `https://<OWNER>.github.io/scientific-data-lifecycle-atlas/`
+- Source: `https://github.com/m950m/scientific-data-lifecycle-atlas/commit/<FULL_RELEASE_SHA>`
+- Interactive view: `https://m950m.github.io/scientific-data-lifecycle-atlas/`
 - Accessed: `2026-08-24`
 
 ## Scope boundary
@@ -40,13 +41,13 @@ See `<LOCAL_TEST_OR_EVIDENCE_LINK>`.
 Resolve the immutable release commit after creating the tag with:
 
 ```bash
-git rev-list -n 1 v1.2.0
+git rev-list -n 1 v1.2.1
 ```
 
 Suggested acknowledgement:
 
 > The lifecycle and evidence-mapping design was informed by Scientific Data
-> Lifecycle Atlas v1.2.0, commit `<FULL_RELEASE_SHA>`, `<SOURCE_URL>`, accessed
+> Lifecycle Atlas v1.2.1, commit `<FULL_RELEASE_SHA>`, `<SOURCE_URL>`, accessed
 > 2026-08-24. It is used as a design reference only; platform behavior and
 > scientific validity are established separately by this repository's tests
 > and runtime evidence.
