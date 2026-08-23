@@ -1,4 +1,5 @@
 from pathlib import Path
+import importlib.util
 import json
 import shutil
 import subprocess
@@ -194,3 +195,31 @@ def test_lineage_result_references_an_observed_test(tmp_path):
 
     assert result.returncode == 1
     assert "is not present in tests" in result.stdout
+
+def test_standalone_user_service_is_restartable_and_points_to_this_checkout():
+    service_script = ROOT / "scripts/manage_user_service.py"
+    spec = importlib.util.spec_from_file_location("manage_user_service", service_script)
+    assert spec is not None and spec.loader is not None
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+
+    unit = module.render_unit("127.0.0.1", 8000)
+
+    assert f"WorkingDirectory={ROOT}" in unit
+    assert str(ROOT / "scripts/serve_lifecycle_atlas.py") in unit
+    assert "Restart=always" in unit
+    assert "NoNewPrivileges=true" in unit
+    assert "ProtectHome=read-only" in unit
+
+def test_independent_deployment_contract_is_pinned_and_publishable():
+    dockerfile = (ROOT / "Dockerfile").read_text(encoding="utf-8")
+    compose = (ROOT / "compose.yaml").read_text(encoding="utf-8")
+    workflow = (ROOT / ".github/workflows/lifecycle-atlas.yml").read_text(
+        encoding="utf-8"
+    )
+
+    assert "nginx-unprivileged:1.30.4-alpine3.24@sha256:" in dockerfile
+    assert "COPY docs/lifecycle-atlas/ /usr/share/nginx/html/" in dockerfile
+    assert "restart: unless-stopped" in compose
+    assert "actions/upload-pages-artifact@v4" in workflow
+    assert "path: docs/lifecycle-atlas" in workflow

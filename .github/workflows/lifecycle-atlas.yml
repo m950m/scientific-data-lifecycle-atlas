@@ -1,14 +1,23 @@
 name: lifecycle-atlas
 
 on:
+  workflow_dispatch:
   pull_request:
     paths:
       - "knowledge/lifecycle-atlas/**"
       - "docs/lifecycle-atlas/**"
       - "scripts/build_lifecycle_atlas.py"
       - "scripts/validate_lifecycle_atlas.py"
+      - "scripts/serve_lifecycle_atlas.py"
+      - "scripts/manage_user_service.py"
       - "tests/test_lifecycle_atlas_contract.py"
       - "pyproject.toml"
+      - "Dockerfile"
+      - "compose.yaml"
+      - ".dockerignore"
+      - "docker/**"
+      - "README.md"
+      - "REFERENCE.md"
       - ".github/workflows/lifecycle-atlas.yml"
   push:
     branches: [main]
@@ -17,18 +26,29 @@ on:
       - "docs/lifecycle-atlas/**"
       - "scripts/build_lifecycle_atlas.py"
       - "scripts/validate_lifecycle_atlas.py"
+      - "scripts/serve_lifecycle_atlas.py"
+      - "scripts/manage_user_service.py"
       - "tests/test_lifecycle_atlas_contract.py"
       - "pyproject.toml"
+      - "Dockerfile"
+      - "compose.yaml"
+      - ".dockerignore"
+      - "docker/**"
+      - "README.md"
+      - "REFERENCE.md"
       - ".github/workflows/lifecycle-atlas.yml"
+
+permissions:
+  contents: read
 
 jobs:
   validate-atlas:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0  # full history so `git log` can find the true last change to knowledge/, not just the tip commit
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
       - name: Install validator dependencies
@@ -39,3 +59,32 @@ jobs:
         run: python scripts/build_lifecycle_atlas.py --check
       - name: Run Atlas contract tests
         run: python -m pytest -q tests/test_lifecycle_atlas_contract.py
+      - name: Build standalone container image
+        run: docker build --tag scientific-data-lifecycle-atlas:ci .
+
+  deploy-pages:
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    needs: validate-atlas
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    concurrency:
+      group: pages
+      cancel-in-progress: false
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+      - name: Upload static site
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: docs/lifecycle-atlas
+      - name: Deploy GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

@@ -10,6 +10,55 @@ Consequently, its project mapping remains specification-oriented until real
 platform test evidence is imported from the platform repository. Atlas
 contract tests are not treated as platform runtime evidence.
 
+## Run independently with Docker
+
+The container runs in the background and uses a restart policy, so it remains
+available after the terminal closes and restarts with the Docker daemon unless
+it was explicitly stopped.
+
+```bash
+docker compose up --build --detach
+docker compose ps
+```
+
+Open <http://localhost:8000>. The health endpoint is
+<http://localhost:8000/healthz>. To inspect or stop it:
+
+```bash
+docker compose logs --follow
+docker compose down
+```
+
+Copy `.env.example` to `.env` only when a different bind address or port is
+needed. The default bind address is loopback-only; public access should use
+GitHub Pages or an authenticated TLS reverse proxy.
+
+If Docker daemon access is unavailable, install the equivalent persistent user
+service without root privileges:
+
+```bash
+.venv/bin/python scripts/manage_user_service.py install
+.venv/bin/python scripts/manage_user_service.py status
+.venv/bin/python scripts/manage_user_service.py logs
+```
+
+The service starts with the user's systemd session and restarts on failure. To
+remove it later, run:
+
+```bash
+.venv/bin/python scripts/manage_user_service.py remove
+```
+
+## Publish as an independent reference
+
+After pushing this repository to GitHub, select **Settings → Pages → Build and
+deployment → Source → GitHub Actions**. A successful push to `main` validates
+the knowledge contract and publishes `docs/lifecycle-atlas/` as the site.
+
+Use the hosted URL for reading, and pin the source tag plus full commit SHA when
+the larger platform cites the Atlas. See [REFERENCE.md](REFERENCE.md) for a
+copy-ready reference record and the claim boundary.
+
 ## Development
 
 ```bash
